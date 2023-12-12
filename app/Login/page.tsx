@@ -1,10 +1,10 @@
 
 import Link  from "next/link";
 import { Linka } from "../Header/link";
-import { Button } from "../Sign_up/button";
+import { Buttonl } from "./button";
 import { Title } from "../Sign_up/title";
 import { InputL } from "./Input";
-import { LInputLL } from "./LInputL";
+
 
 export default function Login(){
     return(
@@ -21,7 +21,7 @@ export default function Login(){
             
              
             <Link href="/componensts/Sign_up" className="text-right pr-10">Não tenho uma conta:</Link>
-            <Button type="submit">Entrar</Button>
+            <Buttonl type="submit">Entrar</Buttonl>
             </div>
            
         </form>

@@ -37,7 +37,7 @@ export function Navbar(){
                     <div className="hidden md:block">
                         <div className=" ml-4 flex items-center space-x-4">
                             <Linka href="/">Home</Linka>
-                         <Linka href="/Header">Sobre nós</Linka>
+                         <Linka href="/">Sobre nós</Linka>
                         <Linka href="/Login">Login</Linka>
                             <Linka href="/Sign_up">
                                 Cadastrar
@@ -74,7 +74,7 @@ export function Navbar(){
                     <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3" >
 
                     <Linkb href="/">Home</Linkb>
-                         <Linkb href="/Header">Sobre nós</Linkb>
+                         <Linkb href="/">Sobre nós</Linkb>
                         <Linkb href="/Login">Login</Linkb>
                             <Linkb href="/Sign_up">
                                 Cadastrar
