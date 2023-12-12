@@ -17,7 +17,7 @@ export default function SignUp(){
     descricao:''
   }
  ])
- useEffect(()=>{
+/* useEffect(()=>{
   fetch('http://localhost:4000/tarefas').then(res=> res.json()
   .then(json=> setdata(json)
   )
@@ -38,7 +38,7 @@ export default function SignUp(){
   )
     console.log(dados)
 
- }
+ }*/
     return(
       
      <div className={styles.bunner}>
@@ -47,15 +47,15 @@ export default function SignUp(){
         rounded-lg">
       
         <Title>Cadstrar Fazenda</Title>
-            <form action=" " onSubmit={handleSubmit}>
+            <form action=" " >
                 <div className="grid md:grid-cols-2 gap-4 items-center ">
 
               
-            <Input  placeholder="tarefa: " type="text" name='tarefa' />
+            <Input  placeholder="Nome: " type="text" name='nome' />
             <Input placeholder="descricao:" type="text" name='descricao' />
-            <Input placeholder="responsavel:" type="text" name='responsavel' />
+            <Input placeholder="NIF:" type="text" name='nif' />
          
-         { /*  <Input placeholder="Telefone: " type="tel" />
+         <Input placeholder="Telefone: " type="tel" />
            
        
           <Input placeholder="Email:" type="email"/>
@@ -72,7 +72,7 @@ export default function SignUp(){
             <option value="BG">Bengo </option>
             <option value="Bié">Bié </option>
 
-          </Select> */}
+          </Select> 
                 </div>
                 <Button type="submit" >Enviar</Button>
              

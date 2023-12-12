@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Linka } from "./link";
 import { Linkb } from "./link2";
+import { AlignJustify ,X} from 'lucide-react'
 
 
 export function Navbar(){
@@ -52,11 +53,11 @@ export function Navbar(){
                          hover:text-black focus:outline-none focus:ring-2
                         focus:ring-inset  focus:ring-white " onClick={handleClick}>
                             {isClick?
-                              <Image src="/x.svg" width="20" height="10" alt="x"/>
+                              <X  className="border-md cursor-pointer bg-gray-500/5 md:hidden"/>
                                
                             :
                             
-                            <Image src="/bars.svg" width="20"  height="10" alt="bars"/>
+                            <AlignJustify className="border-md cursor-pointer bg-gray-500/5 md:hidden"/>
                         }
         
                         </button>
