@@ -42,11 +42,11 @@ export default function SignUp(){
     return(
       
      <div className={styles.bunner}>
-        <div className="grid items-center  my-20 mx-10 bg-transparent mt-5 mx-14  p-5
-        
-        rounded-lg">
+              <div className="flex items-center justify-center">
+              <div className="z-30 backdrop-blur-sm  md:w-[50%] grid items-center py-20 md:px-5 px-2 mt-20 bg-transparent mx-2 md:mx-14 
+         border border-gray-500 rounded-2xl shadow-xl ">
       
-        <Title>Cadstrar Fazenda</Title>
+        <Title>Cadastrar Fazenda</Title>
             <form action=" " >
                 <div className="grid md:grid-cols-2 gap-4 items-center ">
 
@@ -78,7 +78,7 @@ export default function SignUp(){
              
             </form>
 
-
+            </div>
         </div>
         </div>
    

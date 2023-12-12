@@ -21,7 +21,7 @@ export function Navbar(){
     }
     return(
         <>
-        <nav className=" z-10 bg-gray-100 shadow fixed-top border-b-1 border-blue-500">
+        <nav className=" z-10 bg-gray-100 shadow fixed-top border-b border-b-1 border-green-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
@@ -74,9 +74,9 @@ export function Navbar(){
                     <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3" >
 
                     <Linkb href="/">Home</Linkb>
-                         <Linkb href="/componensts/Header">Sobre nós</Linkb>
-                        <Linkb href="#">Login</Linkb>
-                            <Linkb href="/componensts/Sign_up">
+                         <Linkb href="/Header">Sobre nós</Linkb>
+                        <Linkb href="/Login">Login</Linkb>
+                            <Linkb href="/Sign_up">
                                 Cadastrar
                             </Linkb>
                     </div>
