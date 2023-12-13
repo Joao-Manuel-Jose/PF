@@ -20,7 +20,7 @@ export default function Login(){
             <InputL  placeholder="Senha: " type="password" />
             
              
-            <Link href="/componensts/Sign_up" className="text-right pr-10">Não tenho uma conta:</Link>
+            <Link href="/Sign_up" className="text-right pr-10">Não tenho uma conta:</Link>
             <Buttonl type="submit">Entrar</Buttonl>
             </div>
            
