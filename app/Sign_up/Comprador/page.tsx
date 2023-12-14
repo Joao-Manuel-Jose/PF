@@ -12,7 +12,9 @@ export default function Comprador(){
       
         <Title>Comprador</Title>
             <form action=" " >
+                <p className="text-center p-3">O prenchimento de dados de Localização não são obrigatórios!</p>
               <div className="grid md:grid-cols-2 gap-4   ">
+
 
               
                       <Input  placeholder="Nome: " type="text" name='nome' />

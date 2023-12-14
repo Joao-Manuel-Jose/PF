@@ -4,10 +4,11 @@ import { Linka } from "../Header/link";
 import { Buttonl } from "./button";
 import { Title } from "../Sign_up/title";
 import { InputL } from "./Input";
-
+import styles from './login.module.css'
 
 export default function Login(){
     return(
+        <div className={styles.bg}>
         <div className="flex items-center justify-center">
         <div className=" md:w-[40%] grid items-center py-20 md:px-5 px-5 mt-20 bg-gray-100 mx-2 md:mx-14 
      rounded-lg shadow-2xl z-30">
@@ -27,6 +28,7 @@ export default function Login(){
         </form>
       
         
+        </div>
         </div>
         </div>
     )
