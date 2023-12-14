@@ -1,4 +1,7 @@
 import Link from "next/link";
+import clsx from 'clsx';
+import { usePathname } from "next/navigation";
+
 
 import { AnchorHTMLAttributes, ReactNode } from 'react'
 
@@ -8,11 +11,19 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 export function Linka({ children, href, ...props }: LinkProps){
+  const pathname=usePathname()
+  
     return(
-        <Link href={href}
-        className=" bg-white text-black shadow hover:brightness-90
-        rounded-lg p-2" {...props}> 
+      <Link href={href} className={clsx(
+        'bg-white text-black shadow hover:brightness-90 rounded-lg p-2',
+        {
+            'bg-sky-100 text-blue-600': pathname === href,
+          }
+
+        
+        )}  {...props}>
                {children}
-           </Link>
+        </Link>
+            
     )
 }

@@ -9,8 +9,8 @@ import { InputL } from "./Input";
 export default function Login(){
     return(
         <div className="flex items-center justify-center">
-        <div className=" md:w-[50%] grid items-center py-20 md:px-5 px-2 mt-20 bg-gray-100 mx-2 md:mx-14 
-         border border-green-500 rounded-lg ">
+        <div className=" md:w-[40%] grid items-center py-20 md:px-5 px-5 mt-20 bg-gray-100 mx-2 md:mx-14 
+     rounded-lg shadow-2xl z-30">
       
         <Title>Login</Title>
             <form action="">
@@ -20,7 +20,7 @@ export default function Login(){
             <InputL  placeholder="Senha: " type="password" />
             
              
-            <Link href="/Sign_up" className="text-right pr-10">Não tenho uma conta:</Link>
+            <Link href="/Sign_up" className="md:ms-20 text-blue-400">Não tenho uma conta</Link>
             <Buttonl type="submit">Entrar</Buttonl>
             </div>
            

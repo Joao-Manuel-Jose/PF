@@ -14,7 +14,7 @@ export default function SignUp(){
     { title: 'Fazenda', iconClass: '/IconCad/fazenda.png', link:'/Sign_up/Fazenda' },
     { title: 'Transportadora', iconClass: '/IconCad/transporte.png' ,link:'/Sign_up/Transportadora' },
     { title: 'Produtor', iconClass: '/IconCad/produtor.png', link:'/Sign_up/Produtor' },
-    { title: 'Comprador', iconClass: '/IconCad/client.png', link:'/Sign_up/comprador' }
+    { title: 'Comprador', iconClass: '/IconCad/client.png', link:'/Sign_up/Comprador' }
     // Adicione mais cadastros conforme necessário
   ];
  const [data, setdata]=useState([
@@ -49,7 +49,7 @@ export default function SignUp(){
 
     return(<>
               <Title>Cadastrar</Title>
-          <div className="flex justify-center items-center ">
+          <div className="flex justify-center items-center mb-10 ">
             
             <div className="grid md:grid-cols-2 justify-center gap-8">
                 {cadastros.map((cadastro, index) => (

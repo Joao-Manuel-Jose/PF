@@ -1,20 +1,33 @@
 "use client"
 import React, 
 
+
 { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Linka } from "./link";
 import { Linkb } from "./link2";
-import { AlignJustify ,X} from 'lucide-react'
+import { AlignJustify ,HomeIcon,X} from 'lucide-react'
+import { usePathname } from "next/navigation";
 
 
 export function Navbar(){
     const [isClick, setIsclick]=useState(false)
+    const links = [
+        { name: 'Home', href: '/' },
+        {
+          name: 'Sobre nós',
+          href: '/#',
+        
+        },
+        { name: 'Login', href: '/Login'},
+        {name:'Cadastrar', href:'/Sign_up'}
+      ];
+      const pathname=usePathname()
     function handleClick(){
         setTimeout(()=>{
             setIsclick(!isClick)
-        console.log(isClick)
 
         },100)
         
@@ -36,12 +49,15 @@ export function Navbar(){
                     </div>
                     <div className="hidden md:block">
                         <div className=" ml-4 flex items-center space-x-4">
-                            <Linka href="/">Home</Linka>
-                         <Linka href="/">Sobre nós</Linka>
-                        <Linka href="/Login">Login</Linka>
-                            <Linka href="/Sign_up">
-                                Cadastrar
-                            </Linka>
+                            {links.map((link,index)=>{
+                                return(
+                                    <Linka href={link.href} 
+                                >
+                                        {link.name}
+                                    </Linka>
+                                )
+                            })}
+                          
 
 
                         </div>
@@ -73,12 +89,14 @@ export function Navbar(){
                 <div className="md:hidden ">
                     <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3" >
 
-                    <Linkb href="/">Home</Linkb>
-                         <Linkb href="/">Sobre nós</Linkb>
-                        <Linkb href="/Login">Login</Linkb>
-                            <Linkb href="/Sign_up">
-                                Cadastrar
-                            </Linkb>
+                    {links.map((link,index)=>{
+                                return(
+                                    <Linkb href={link.href} onClick={handleClick}
+                                >
+                                        {link.name}
+                                    </Linkb>
+                                )
+                            })}
                     </div>
 
                 </div>

@@ -3,23 +3,35 @@ import { Buttons } from "../button";
 import { Input } from "../input";
 import { Select } from "../select";
 import { Title } from "../title";
-import styles from '../sign.module.css'
+import styles from './fazenda.module.css'
+import Link from "next/link";
+import { Container } from "../Container";
 export default function Fazenda(){
     return(
-         <div className={styles.bunner}>
-          <div className="flex items-center justify-center py-10">
-          <div className="bg-gray-50    md:w-[70%] grid items-center p-10  md:px-5 px-2 mt-20 mx-2 md:mx-14 
-           rounded-2xl shadow-xl ">
+      <Container className={styles.bunner} >
       
         <Title> Fazenda</Title>
             <form action=" " >
-              <div className="grid md:grid-cols-2 gap-4  ">
+              <div className="grid md:grid-cols-2 gap-4   ">
 
               
                       <Input  placeholder="Nome: " type="text" name='nome' />
-                      <Input placeholder="descricao:" type="text" name='descricao' />
+
+                      <Select >
+                        <option value="">Selecione a província: </option>
+                        <option value="BG">Bengo </option>
+                        <option value="Bié">Bié </option>
+
+                      </Select> 
+                      
                       <Input placeholder="NIF:" type="text" name='nif' />
-                  
+
+                      <Select disabled>
+                        <option value="">Selecione o Município: </option>
+                        <option value="BG">Bengo </option>
+                        <option value="Bié">Bié </option>
+
+                      </Select>
                       <Input placeholder="Telefone: " type="tel" />
                     
                 
@@ -28,20 +40,14 @@ export default function Fazenda(){
           
                       <Input type="file" accept="image/*"/>
                   
-         
-       
-                      <Select >
-                        <option value="">Selecione a província: </option>
-                        <option value="BG">Bengo </option>
-                        <option value="Bié">Bié </option>
+                      <Input placeholder="descricao:" type="text" name='descricao' />
+        
+                      <Input placeholder="Distrito: " type="text" />
+                    
+                
+                    <Input placeholder="Rua:" type="text"/>
+                    <Link href="/Login" className=" text-blue-400">Já tenho uma conta</Link>
 
-                      </Select> 
-                      <Select >
-                        <option value="">Selecione o Município: </option>
-                        <option value="BG">Bengo </option>
-                        <option value="Bié">Bié </option>
-
-                      </Select> 
               </div>
               <div className="flex justify-center">
                        <Buttons type="submit">Enviar</Buttons>
@@ -49,9 +55,8 @@ export default function Fazenda(){
              
             </form>
 
-            </div>
-        </div>
-        </div>
+           
+           </Container>
     )
 
 }

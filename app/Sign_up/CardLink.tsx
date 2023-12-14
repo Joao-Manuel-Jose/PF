@@ -11,7 +11,7 @@ interface CadastroCardProps {
 export function CardLink({ title, iconSrc ,link}:CadastroCardProps){
   return (
     <div>
-      <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-200  border border-black-200 md:w-[350px] sm:w-[500px]
+      <div className="max-w-sm py-5 rounded overflow-hidden shadow-xl bg-gray-200 hover:bg-blue-200  border border-black-200 md:w-[350px] sm:w-[500px]
       ">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
