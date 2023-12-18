@@ -3,12 +3,13 @@ import { Buttons } from "../button";
 import { Input } from "../input";
 import { Select } from "../select";
 import { Title } from "../title";
-import styles from './Transportadora.module.css'
+
 import Link from "next/link";
 import { Container } from "../Container";
+import { Background } from "./Background";
 export default function Transportadora(){
     return(
-      <Container className={styles.bunner}>
+     <Background>
       
         <Title>Transportadora</Title>
             <form action=" " >
@@ -54,9 +55,9 @@ export default function Transportadora(){
               </div>
              
             </form>
-
+            </Background>
            
-           </Container>
+           
     )
 
 }

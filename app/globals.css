@@ -2,3 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes girar {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .girar {
+    animation: girar 5s linear infinite; /* Ajuste a duração conforme necessário */
+  }
+  @keyframes girar {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .border-girando::before,
+  .border-girando::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-radius: 8px; /* Ajuste conforme necessário */
+    animation: girar 5s linear infinite; /* Ajuste a duração conforme necessário */
+  }
+  
+  .border-girando::before {
+    border-top-color: #3490dc; /* Ajuste a cor conforme necessário */
+  }
+  
+  .border-girando::after {
+    border-bottom-color: #3490dc; /* Ajuste a cor conforme necessário */
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .borderRotate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    animation: rotate 5s linear infinite;
+    pointer-events: none; /* Para que não interfira com a interação do usuário */
+  }
+      

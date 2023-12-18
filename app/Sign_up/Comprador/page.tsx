@@ -1,4 +1,4 @@
-
+"use client"
 import { Buttons } from "../button";
 import { Input } from "../input";
 import { Select } from "../select";

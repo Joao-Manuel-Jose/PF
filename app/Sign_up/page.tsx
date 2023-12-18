@@ -3,12 +3,11 @@ import {useState, useEffect} from 'react'
 import { FormEvent } from 'react'
 import { CardLink } from './CardLink'
 import { Buttons } from "./button"
-import { Input } from "./input"
-import { Select } from "./select"
-import { Title } from "./title"
-import { json } from 'stream/consumers'
-import styles from './sign.module.css'
 
+import { Title } from "./title"
+
+
+import  styles from './bd.module.css'
 export default function SignUp(){
   const cadastros = [
     { title: 'Fazenda', iconClass: '/IconCad/fazenda.png', link:'/Sign_up/Fazenda' },
@@ -47,7 +46,7 @@ export default function SignUp(){
 
  }*/
 
-    return(<>
+    return(<div className=''>
               <Title>Cadastrar</Title>
           <div className="flex justify-center items-center mb-10 ">
             
@@ -57,7 +56,7 @@ export default function SignUp(){
                      ))}
             </div>
           </div>
-       </>
+       </div>
      
       
     /* <div className={styles.bunner}>

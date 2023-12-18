@@ -10,4 +10,48 @@
       background: url('/background/login.jpg') center center no-repeat; /* URL da sua imagem */
     background-size: cover; /* Para cobrir toda a área da div */
   }
+  .borderRotate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    animation: rotate 5s linear infinite;
+    pointer-events: none; /* Para que não interfira com a interação do usuário */
+  }
+  .box {
+    position: relative;
+   
+    background-color: transparent;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.box::before{
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 200%;
+  background: linear-gradient(180deg, #07e2f1, #eb9b05);
+  animation: animate 3s linear infinite;
+}
+.box::after{
+  content: "";
+  position: absolute;
+  background-color: white;
+  inset: 5px;
+  border-radius: inherit;
+}
+@keyframes animate {
+  from{
+      transform: rotate(0deg);
+  }
+  to{
+      transform: rotate(360deg);
+  }
+}
   
