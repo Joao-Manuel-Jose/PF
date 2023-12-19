@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import { Bunner } from './Components/Bunner/page'
 import Footer from './Components/Footer/page'
+import { Navbar } from './Components/Header/navbar'
+
 
 export default function Home() {
   return (
-    <main>
+    <>
+   
       <Bunner/>
 
 
     
-    </main>
+    </>
   )
 }

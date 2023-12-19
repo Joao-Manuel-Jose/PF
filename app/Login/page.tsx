@@ -5,10 +5,14 @@ import { Buttonl } from "./button";
 import { Title } from "../Sign_up/title";
 import { InputL } from "./Input";
 import styles from './login.module.css'
+import { Navbar } from "../Components/Header/navbar";
 
 export default function Login(){
     return(
+        <>
+           
         <div className={styles.bg} >
+        
       
         {/*<div className={styles.box}>*/  }
         <div className="flex items-center justify-center">
@@ -36,5 +40,6 @@ export default function Login(){
         </div>
         
         </div>
+        </>
     )
 }
