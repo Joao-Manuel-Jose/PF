@@ -8,7 +8,7 @@ import HumanizingBrands from './HumanizingBrands'
 export default function Home() {
   return (
     <>
-   
+   <Navbar/>
       <Bunner/>
 
       <HumanizingBrands/>

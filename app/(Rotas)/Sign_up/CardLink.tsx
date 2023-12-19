@@ -1,6 +1,6 @@
 // CadastroCard.tsx
 import React from 'react';
-import { Linka } from '../Components/Header/link';
+import { Linka } from '@/app/Components/Header/link';
 
 interface CadastroCardProps {
   title: string;

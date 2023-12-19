@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import styles  from '../Components/Bunner/bunner.module.css'
+import styles  from '@/app/Components/Bunner/bunner.module.css'
 import style from './anima.module.css'
 import Humani from '@/app/HumanizingBrands'
 import { TitleAboutUs } from './title'
 import { Subtitle } from './subtitle'
 import Image from 'next/image'
-import Footer from '../Components/Footer/page'
+import Footer from '../../Components/Footer/page'
 
 
 export default function AboutUs(){
