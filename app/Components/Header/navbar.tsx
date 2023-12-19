@@ -35,7 +35,7 @@ export function Navbar(){
     }
     return(
         <>
-        <nav className=" z-10 bg-gray-100 shadow fixed-top border-b border-b-1 border-green-100">
+        <nav className="   z-30 h-38 bg-gray-100 shadow  w-full border-b border-b-1 border-green-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
