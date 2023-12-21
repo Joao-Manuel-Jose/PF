@@ -40,7 +40,7 @@ export function Navbar(){
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                        <Link href="/"className="  text-black  px-3 py-2 font-medium">
+                            <Link href="/"className="  text-black  px-3 py-2 font-medium">
                             <h1 className="text-2xl text-black font-bold">Tchivala</h1></Link>
 
 
@@ -90,7 +90,7 @@ export function Navbar(){
                 <div className="md:hidden ">
                     <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3" >
 
-                    {links.map((link,index)=>{
+                        {links.map((link,index)=>{
                                 return(
                                     <Linkb href={link.href} onClick={handleClick} key={index}
                                 >

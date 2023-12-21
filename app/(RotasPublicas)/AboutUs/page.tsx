@@ -16,7 +16,7 @@ export default function AboutUs(){
         <TitleAboutUs>Seja bem Vindo a 
             <span className='bg-black px-3 py-1 ms-2 shaddow-lg rounded-lg'>Tchivala</span>
         </TitleAboutUs>
-        <article className='font normal text-md w-full md:max-w-[70%] text-center mx-auto px-10'>Este Lorem, ipsum dolor sit amet consectetur 
+        <article className='font-bold text-lg text-gray-100 w-full md:max-w-[60%] text-center mx-auto px-10'>Este Lorem, ipsum dolor sit amet consectetur 
             adipisicing elit. Dolorum debitis beatae, <Link href='/User/1'> Usuario </Link>
             at quaerat molestiae rem provident inventore,
              commodi fugit dolor quod molestias? Possimus

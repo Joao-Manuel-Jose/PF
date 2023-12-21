@@ -13,8 +13,8 @@ export default function User({params}:{
         nome:string
     }
 }){   const links = [
-    { name: 'Notificações', href: '#' ,icone:<BellRing  size={30}/>},
-    { name: 'Mensagens ', href: '#' ,icone:<MessageCircle  size={30}/>},
+  
+   
     { name: ' Inserir Produto ', href: '#', icone:<PlusCircle  size={30} /> },
     {
       name: 'Visualizar Produtos',
@@ -30,8 +30,8 @@ export default function User({params}:{
     {name:'Sair',href:'/', icone:<LogOut size={30} />}
   ];
     return(
-        <section className="grid md:grid-cols-12 bg-gray-200  py-5">
-        <div className="md:col-span-3 py-4 px-2">
+        <section className="grid  md:grid-cols-12 bg-gray-200  py-5">
+        <div className="hidden sm:hidden md:block md:col-span-3 py-4 px-2">
             <h1 className="flex items-center text-xl gap-2">
             <CircleUserRound size={40} className="text-gray-600" strokeWidth={0.8} />  {params.nome}
             </h1>
@@ -49,7 +49,7 @@ export default function User({params}:{
 
         </div>
         <BunnerU>
-        <div className="flex justify-center">
+        <div className="flex justify-center " >
         <PicUser src='/gelsondevelop.JPG' />
                
                 </div>
@@ -70,6 +70,7 @@ export default function User({params}:{
                     <Notification props={2} />
 
         </div>
+        
         
         </section>
     )

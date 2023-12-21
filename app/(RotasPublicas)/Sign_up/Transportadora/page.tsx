@@ -1,5 +1,7 @@
-
+"use client"
 import { Buttons } from "../button";
+import { useState, useEffect } from 'react';
+import { getProvinces } from "../busca";
 import { Input } from "../input";
 import { Select } from "../select";
 import { Title } from "../title";
@@ -8,6 +10,21 @@ import Link from "next/link";
 import { Container } from "../Container";
 import { Background } from "./Background";
 export default function Transportadora(){
+  interface Province {
+    id: string;
+    name: string;
+  }
+  const [provinces, setProvinces] = useState<Province[]>([]);
+
+  useEffect(() => {
+    const fetchProvinces = async () => {
+      const provincesData = await getProvinces();
+      setProvinces(provincesData);
+    };
+
+    fetchProvinces();
+  }, []);
+  
     return(
      <Background>
       
@@ -20,8 +37,11 @@ export default function Transportadora(){
 
                       <Select >
                         <option value="">Selecione a província: </option>
-                        <option value="BG">Bengo </option>
-                        <option value="Bié">Bié </option>
+                        {provinces.map((province) => (
+                  <option key={province.id} value={province.name}>
+                      {province.name}
+                         </option>
+                         ))}
 
                       </Select> 
                       
