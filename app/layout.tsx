@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Montserrat } from 'next/font/google'
 import './globals.css'
-import { Navbar } from './Components/Header/navbar'
+import { AuthProvider } from './(User)/user'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,7 +25,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={`${montserrat.className}`}>{children}</body>
+      <body className={`${montserrat.className}`}>
+      <AuthProvider>
+      
+      {children}
+
+    </AuthProvider>
+        
+        
+        </body>
     </html>
   );
 }

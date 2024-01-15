@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @keyframes girar {
     0% {
       transform: rotate(0deg);
@@ -63,7 +65,5 @@
     animation: rotate 5s linear infinite;
     pointer-events: none; /* Para que não interfira com a interação do usuário */
   }
-  .sombra{
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
+ 
       

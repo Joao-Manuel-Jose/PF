@@ -1,0 +1,13 @@
+.bunner{
+    margin: 0;
+    padding: 20px;
+  
+  
+   
+    /* Defina a altura mínima para garantir que a imagem cubra toda a altura da tela */
+    min-height: 100vh;
+  
+    background: url('/background/produtora.jpg') center center no-repeat; /* URL da sua imagem */
+    background-size: cover; /* Para cobrir toda a área da div */
+  }
+  

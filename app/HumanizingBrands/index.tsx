@@ -24,7 +24,7 @@ export default function Index() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <Image
-          className="hidden w-[565px] md:block"
+          className="hidden w-full md:block"
           src={Boy}
           height={666}
           width={565}
@@ -42,8 +42,8 @@ export default function Index() {
           >
             <Title>Expandimos Negócios</Title>
             <Paragraph>
-              <strong className="font-bold">Nossa paixão </strong>é criar conexões
-              autênticas entre negócios e clientes.
+              <strong className="font-bold">Nossa paixão </strong>é dar visibilidade ao que é nosso
+              e garanir preços justos e moderados no mercado.
             </Paragraph>
             <Button>Saber mais</Button>
           </motion.div>

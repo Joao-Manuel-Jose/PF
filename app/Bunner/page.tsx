@@ -11,7 +11,7 @@ export function Bunner(){
             Pesquisar Produtos do mercado angolano:
           </h1>
     <div className="max-w-md mx-auto bg-white p-1 rounded-2xl shadow-md">
-    <form action="#" method="GET" className="flex items-center">
+    <form action="#" method="POST" className="flex items-center">
       <InputB
         type="text"
         name="search"

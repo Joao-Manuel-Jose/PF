@@ -1,0 +1,31 @@
+export const cadastrarFazenda = async (formData: FormData): Promise<any> => {
+  try {
+    const formDataToSend = new FormData();
+
+    // Adiciona cada campo do formData ao FormData
+    Object.entries(formData).forEach(([key, value]) => {
+      if (key === 'foto' && value) {
+        formDataToSend.append(key, value as File, (value as File).name);
+      } else {
+        formDataToSend.append(key, value.toString());
+      }
+    });
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      body: formDataToSend,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      const errorMessage = await response.json();
+      throw new Error(`Erro ao cadastrar fazenda. Detalhes: ${JSON.stringify(errorMessage)}`);
+    }
+  } catch (error) {
+    console.error('Erro ao fazer a solicitação:', error);
+    throw error;
+  }
+};
+

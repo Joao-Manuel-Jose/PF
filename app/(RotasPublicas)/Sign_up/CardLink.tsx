@@ -1,6 +1,8 @@
 // CadastroCard.tsx
 import React from 'react';
-import { Linka } from '@/app/Components/Header/link';
+
+import Image from 'next/image';
+import { LinkG } from '@/app/Components/Global/link';
 
 interface CadastroCardProps {
   title: string;
@@ -10,16 +12,20 @@ interface CadastroCardProps {
 
 export function CardLink({ title, iconSrc ,link}:CadastroCardProps){
   return (
-    <div>
-      <div className="max-w-sm py-5 rounded overflow-hidden shadow-xl bg-gray-200 hover:bg-blue-200  border border-black-200 md:w-[350px] sm:w-[500px]
+
+      <div className="sm:mx-2 mx-0 max-w-sm  rounded-lg overflow-hidden shadow-xl bg-gray-200 hover:bg-blue-200  pb-5 border border-black-200 md:w-[21rem] sm:w-24rem]
       ">
+      <Image src={iconSrc} width={200} height={200} alt={title} className='w-full'/>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <img src={iconSrc} alt={title} className="w-16 h-16 mx-auto mb-4" />
-        <Linka href={link}>Criar Conta</Linka>
+        <LinkG  color='bg-sky-300 mx-5' href={link}> Cadastrar</LinkG>
+       
+       
       </div>
     </div>
-    </div>
+   
+ 
+    
   )
 }
 
