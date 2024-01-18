@@ -1,6 +1,6 @@
-import { ReceiptIcon, SendIcon, X } from "lucide-react"
+import { ExpandIcon, ReceiptIcon, SendIcon, X } from "lucide-react"
 import { Paragrath } from "../../Header/User/link"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import { PagrathMensage } from "./paragraphMenssage"
 import { ContainerMensage } from "./ContainerMensage"
 
@@ -8,6 +8,7 @@ import { ButtonMensage } from "./button"
 import AutoExpandingTextarea from "./textarea"
 import { HeaderCompont } from "../../Global/header_component"
 import Link from "next/link"
+import InputComponent from "./container_bootom"
 export interface mensagemS{
     id:number,
     nome:string,
@@ -46,13 +47,14 @@ export default function Mensage (){
 
 
     }
+    
     return(
       
       
-        <div className="  shadow-md bg-gray-100  rounded-lg">
+        <div className="relative   h-screen  shadow-md bg-gray-100  rounded-lg">
         {
             mensagemSelecionda?
-            <div className="p-5">
+            <div className=" p-5">
                 <header>
                 <X className="cursor-pointer text-sky  "  onClick={()=>setMensagemSelecionada(null)} />
                 </header>
@@ -60,18 +62,13 @@ export default function Mensage (){
                 
                 <p>{mensagemSelecionda.mensage.map((p,i)=><PagrathMensage key={i}>{p}</PagrathMensage>)}</p>
        
-                <ContainerMensage>
-                <AutoExpandingTextarea className="mb-4" />
-                 
-                    <ButtonMensage><SendIcon className="text-sky-500" /></ButtonMensage>
-
-                </ContainerMensage>
+                <InputComponent />
                 
                 </div>
                 :
             <>
-                <div className="bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-2 ">
-                <Link className="hidden md:block text-center" href="/Components/User/Mensage/FullScreen"><ReceiptIcon/>   </Link>
+                <div className="bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-4 ">
+                <Link className="hidden md:block text-center" href="/Components/User/Mensage/FullScreen"><ExpandIcon  />  </Link>
                     <HeaderCompont title="Mensagens" />
                     
                 </div>

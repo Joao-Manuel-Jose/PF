@@ -2,19 +2,15 @@ import { Children, FormHTMLAttributes, ReactNode } from "react"
 interface FormProps extends FormHTMLAttributes<HTMLFormElement>{
     children:ReactNode
 }
-export function ContainerMensage({children, ...props }:FormProps ){
-
-    return(
-        <div className=" max-w-md mx-auto bg-white p-1 rounded-2xl shadow-md
-        ring-1  focus:ring-sky-500
-      
-        ">
-        <form method="POST" className="  flex items-center  " {...props}>
+export function ContainerMensage({ children, ...props }: FormProps) {
+    return (
+      <div className="fixed bottom-0 w-2/3">
+        <div className="w-90 mx-auto bg-white rounded-2xl shadow-md ring-1 focus:ring-sky-500 p-4">
+          <form method="POST" action="#" className="flex" {...props}>
             {children}
-
-
-        </form>
+          </form>
         </div>
-
-    )
-}
+      </div>
+    );
+  }
+  
