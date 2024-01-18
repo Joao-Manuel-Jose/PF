@@ -11,7 +11,7 @@ export default function SignUp(){
     { title: 'Fazenda', iconClass: '/background/b-1.jpg', link:'/SignUp/Fazenda' },
     { title: 'Comprador', iconClass: '/background/comprador2.jpg', link:'/SignUp/Comprador' },
     { title: 'Produtor', iconClass: '/background/produtora.jpg', link:'/SignUp/Produtor' },
-    { title: 'Transportadora', iconClass: '/background/transportadora.JPG' ,link:'/SignUp/Transportadora' },
+    { title: 'Transportadora', iconClass: '/background/transportadora2.JPG' ,link:'/SignUp/Transportadora' },
    
    
   

@@ -28,7 +28,7 @@ export default function Home() {
       
        </MainContainer>
        <button onClick={isOpen}>Abrir</button>
-       <Modal isOpen={open} onClose={isClose}>
+       <Modal isOpen={open} onClose={isClose} title='TESTE'>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia repellat molestiae, reiciendis molestias, ut corrupti eum quis ex aliquam consectetur tenetur alias maxime accusamus commodi eius dolorem! Eius, iste alias.
        </Modal>
     

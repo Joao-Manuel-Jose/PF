@@ -16,6 +16,11 @@ import { Search } from "lucide-react"
 import Link from "next/link"
 
 import { useState } from "react"
+import ModalFazenda from "./modal/Fazenda/page"
+import ModalTransportadora from "./modal/Transportadora/page"
+import ModalPerfil from "./modal/perfil/page"
+import ModalCompradores from "./modal/compradores/page"
+import ModalProdutoras from "./modal/Produtoras/page"
 
 
 
@@ -46,17 +51,17 @@ export default function UesrN(params:{
 
     }
      const UserNMycontentOfcanvasModal=[
-        { name: ' Perfil',  componente:null },
+        { name: ' Perfil',  componente:<ModalPerfil isOpen={componenteOfcanvas} onClose={onClose}/> },
         {
           name: ' Produtoras',
           href: '#',
           
-          componente:null
+          componente:<ModalProdutoras isOpen={componenteOfcanvas} onClose={onClose}/>
         
         },
-        { name: ' Fazendas',  componente:<Modal isOpen={componenteOfcanvas} onClose={onClose}>ss</Modal>} ,
-        {name:'Transportadoras', href:'#',  componente:<Modal isOpen={componenteOfcanvas} onClose={onClose}>ss</Modal>},
-        {name:'Compradores',  componente:null},
+        { name: ' Fazendas',  componente:<ModalFazenda  isOpen={componenteOfcanvas} onClose={onClose}/>} ,
+        {name:'Transportadoras',  componente:<ModalTransportadora  isOpen={componenteOfcanvas} onClose={onClose}/>},
+        {name:'Compradores',  componente:<ModalCompradores isOpen={componenteOfcanvas} onClose={onClose}/>},
         {name:'Facturas',componente:null},
         {name:'Comprados', componente:null},
         {name:'Sair',href:'/', componente:null}
@@ -106,7 +111,7 @@ export default function UesrN(params:{
           
                
                 <InputG  type="text"  placeholder="Buscar..." id="search" />
-                <ButtonG type="submit"><Search className="text-sky-300"/></ButtonG>
+                <ButtonG color=' 'type="submit"><Search className="text-sky-300"/></ButtonG>
                 
             </Form>
        

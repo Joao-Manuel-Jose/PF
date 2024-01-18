@@ -1,5 +1,6 @@
 import { Bell } from "lucide-react";
 import { ParagrathNotification } from "./paragrath";
+import { HeaderCompont } from "../../Global/header_component";
 
 export function Notification({props}:{props:number}){
     const Notification=[
@@ -26,12 +27,15 @@ export function Notification({props}:{props:number}){
 
     ]
     return(<>
-        
-            <div className="shadow-md bg-gray-100 p-3 rounded-lg">
-            <h1 className="flex text-xl font-semibold ">
-        <Bell className="text-blue-500"/>  {props}  Noticações 
-            </h1>
-                <ul>
+      
+            <div className="shadow-md bg-gray-100  rounded-lg">
+            <div className="bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-5 ">
+                
+                <HeaderCompont title="Notificações" />
+                
+            </div>
+       
+                <ul className="p-3">
                     {Notification.map(noti=>(
                      <li className="bg-gray-200 p-2 my-4 rounded-lg shadow-md" key={noti.id}>
                         <ParagrathNotification>{noti.content}</ParagrathNotification> 

@@ -3,30 +3,34 @@ import { X } from "lucide-react"
 import { ReactNode } from "react"
 import { ContainerMoodal } from "./container"
 import { Metadata } from "next"
+import { TitleG } from "../../Global/title"
+import { ButtonG } from "../../Global/button"
 
  export type modalProps={
     isOpen:string | null,
     onClose:()=>void,
-    children:ReactNode
+    children:ReactNode,
+    title:string
 }
 
-export function Modal({isOpen,onClose,children}:modalProps){
+export function Modal({isOpen,onClose,children,title}:modalProps){
  if(isOpen)
     return(
         <ContainerMoodal >
-        <div className=" mb-4 cursor-pointer ">
+        <div className="bg-white z-50 shadow-sm mb-4 cursor-pointer p-2 pb-3 top-0 fixed-top border-b border-gray-300 rounded-xl ">
             <X className="text-red-700  text-md "  onClick={()=>setTimeout(()=>{
             onClose()
-        },500)}/>
+        },300)}/>
+       <TitleG>{title}</TitleG>
         </div>
       <div className=" p-4 z-10">
         {children}
-        <button className="mt-4 p-2 bg-blue-500 text-white" 
+       <ButtonG color="bg-sky-500"
         onClick={()=>setTimeout(()=>{
             onClose()
         },200)}>
-          Fechar Modal
-        </button>
+          Fechar 
+        </ButtonG >
       </div>
       </ContainerMoodal>
     

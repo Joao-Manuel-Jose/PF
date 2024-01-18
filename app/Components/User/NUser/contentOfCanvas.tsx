@@ -1,4 +1,4 @@
-import ModaUser from "@/app/(User)/User/NUser/[params]/modal/page";
+import ModaUser from "@/app/(User)/User/NUser/[params]/modal/Fazenda/page";
 import { CircleUserRoundIcon, Eye, EyeIcon, ListIcon, LogOutIcon, ScanEye } from "lucide-react";
 
 export const UserNMycontentOfcanvas=[
