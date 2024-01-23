@@ -27,9 +27,9 @@ function AutoExpandingTextarea({ className }:AutoExpandingTextareaProps){
   return (
     <textarea
       ref={textareaRef}
-      className={`resize-none h-8 mx-auto  w-[100%] rounded-2xl
-      text-gray-700 outline-none   bg-white py-1
-    px-2 md:w-2/3 ${className || ''}`}
+      className={`resize-none h-14  mx-auto  w-[100%] rounded-2xl
+      text-gray-700 outline-none   bg-white py-1 
+    px-2 md:w-full ${className || ''}`}
       value={text}
       onChange={handleInputChange} required
     />

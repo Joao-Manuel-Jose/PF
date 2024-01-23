@@ -18,7 +18,7 @@ const InputComponent= () => {
   };*/
 
   return (
-    <div className="absoloute  top-0 left-0 right-0 w-full">
+    <div className="absoloute  bottom-0 left-0 right-0 w-[50%]">
       <form className="flex items-center justify-between p-4 bg-gray-200">
         <input
           type="text"

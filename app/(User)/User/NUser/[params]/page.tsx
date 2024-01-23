@@ -21,6 +21,7 @@ import ModalTransportadora from "./modal/Transportadora/page"
 import ModalPerfil from "./modal/perfil/page"
 import ModalCompradores from "./modal/compradores/page"
 import ModalProdutoras from "./modal/Produtoras/page"
+import { Button } from "@/app/HumanizingBrands/Button"
 
 
 
@@ -88,8 +89,8 @@ export default function UesrN(params:{
         <div className="hidden sm:hidden md:block md:col-span-3 py-4 px-2">
             <ContentOfcanvas nome={params.nome}>
                 {UserNMycontentOfcanvas.map((Content, index)=>(
-                    <li className=" p-2 my-4 rounded-lg" key={index}>
-                    <Link className={clsx('p-2 flex items-center text-md justyfy-center gap-1 shadow-md rounded-md  hover:bg-blue-300  hover:rounded-lg',
+                    <li className=" p-2 my-4  rounded-lg" key={index}>
+                    <Link className={clsx('p-2 flex items-center text-md justyfy-center gap-1 shadow-md rounded-md bg-gray-200  hover:bg-blue-300  hover:rounded-lg',
                     {
                         'bg-blue-500 text-white':Content.name===componenteOfcanvas
                     })
@@ -111,7 +112,7 @@ export default function UesrN(params:{
           
                
                 <InputG  type="text"  placeholder="Buscar..." id="search" />
-                <ButtonG color=' 'type="submit"><Search className="text-sky-300"/></ButtonG>
+                <button type="submit"><Search className="text-sky-300"/></button>
                 
             </Form>
        

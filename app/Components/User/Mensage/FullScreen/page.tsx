@@ -25,10 +25,10 @@ export default function MenssageFullScreen({children}:{children:ReactNode}){
     }
     return(
         <>
-        <main className="hidden md:block relative h-screen">
+        <main className="hidden md:block  ">
         <HeaderMenssageF/>
         <section className=" grid  md:grid-cols-12 bg-gray-100  ">
-            <div className=" shadow-lg md:col-span-5 py-4 px-2 border-e border-gray-300">
+            <div className="h-screen shadow-lg md:col-span-4 py-4 px-2 border-e border-gray-300">
                 <ul>
                 
                     {mensagem.map((m)=> 
@@ -42,20 +42,28 @@ export default function MenssageFullScreen({children}:{children:ReactNode}){
               </ul>
 
             </div>
-            <div className=" md:col-span-7   h-screen">
+            <div className=" md:col-span-8   h-screen">
             {mensagemSelecionda?
-            <div className="p-5">
+            <div className="relative p-5">
              
                 <h1 className="text-lg font bold mb-8">{mensagemSelecionda.nome}</h1>
                 
-                <p>{mensagemSelecionda.mensage.map((p,i)=><PagrathMensage key={i}>{p}</PagrathMensage>)}</p>
-       
+                <p className=" mx-auto">{mensagemSelecionda.mensage.map((p,i)=><PagrathMensage key={i}>{p}</PagrathMensage>)}</p>
+             <br/>   
+                <div className="fixed  bottom-0">
+                 
+           
+
+                   
                 <ContainerMensage>
-                <AutoExpandingTextarea className="mb-4" />
+                <AutoExpandingTextarea className="" />
                  
                     <ButtonMensage type="submit"><SendIcon className="text-sky-500" /></ButtonMensage>
 
                 </ContainerMensage>
+               
+                </div>
+           
                 
                 </div>: 
                 <NotMenssage>

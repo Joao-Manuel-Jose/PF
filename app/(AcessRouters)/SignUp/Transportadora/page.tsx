@@ -13,14 +13,17 @@ export default function Transportadora(){
     name: string;
   }
   const [provincias, setProvincias] = useState([]);
+ 
   const [municipios, setMunicipios] = useState([]);
+  const [comuna, setComuna] = useState<string[]>([])
   const [selectedProvincia, setSelectedProvincia] = useState('');
+  const [selectedComuna, setselectedComuna] = useState('');
   const [selectedMunicipio, setSelectedMunicipio] = useState('');
   useEffect(() => {
     // Faz a requisição para o servidor para obter a lista de províncias
     // Substitua isso por uma chamada real à API do seu servidor
     setTimeout(()=>{
-      fetch('http://localhost:4000/provinces')
+      fetch('http://localhost:5000/provinces')
       .then(response => response.json())
       .then(data => setProvincias(data))
       .catch(error => console.error('Erro ao obter a lista de províncias:', error));
@@ -29,11 +32,10 @@ export default function Transportadora(){
     
   }, []);
   useEffect(() => {
-    // Faz a requisição para o servidor para obter os municípios da província selecionada
-    // Substitua isso por uma chamada real à API do seu servidor
+   
     setTimeout(()=>{
       if (selectedProvincia) {
-        fetch(`http://localhost:4000/${selectedProvincia}/municipio`)
+        fetch(`http://localhost:5000/${selectedProvincia}/municipio`)
           .then(response => response.json())
           .then(data => setMunicipios(data))
           .catch(error => console.error('Erro ao obter a lista de municípios:', error));
@@ -44,6 +46,29 @@ export default function Transportadora(){
     },200)
 
   }, [selectedProvincia]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (selectedMunicipio) {
+          const response = await fetch(`http://localhost:5000/${selectedProvincia}/${selectedMunicipio}`);
+          const data = await response.json();
+          setComuna([/* Adicione uma opção vazia ou de seleção padrão aqui */, ...data]);
+          console.log(data, comuna);
+        } else {
+          setComuna([]);
+        }
+      } catch (error) {
+        console.error('Erro ao obter a lista de comunas:', error);
+      }
+    };
+  
+    setTimeout(() => {
+      fetchData();
+    }, 200);
+  
+  }, [selectedMunicipio, selectedProvincia]);
+  
+  
 
 
 
@@ -73,6 +98,10 @@ export default function Transportadora(){
                       
                       <Input placeholder="NIF:" type="text" name='nif' />
 
+              
+                        
+
+                    
                       <Select 
         value={selectedMunicipio}
         onChange={(e) => setSelectedMunicipio(e.target.value)}
@@ -86,6 +115,20 @@ export default function Transportadora(){
                         
 
                       </Select>
+                      <Select 
+        value={selectedComuna}
+        onChange={(e) => setselectedComuna(e.target.value)}
+        disabled={!selectedProvincia || !selectedMunicipio} >
+                        <option value="null">Selecione a comuna: </option>
+                        {comuna.map((comuna) => (
+          <option key={comuna} value={comuna}>
+            {comuna}
+            </option>
+             ))}
+                        
+
+                      </Select>
+                
                       <Input placeholder="Telefone: " type="tel" />
                     
                 

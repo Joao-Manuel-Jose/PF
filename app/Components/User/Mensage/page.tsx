@@ -1,4 +1,4 @@
-import { ExpandIcon, ReceiptIcon, SendIcon, X } from "lucide-react"
+import { ExpandIcon, FileAudioIcon, ReceiptIcon, SendIcon, X } from "lucide-react"
 import { Paragrath } from "../../Header/User/link"
 import { FormEvent, useState } from "react"
 import { PagrathMensage } from "./paragraphMenssage"
@@ -9,6 +9,8 @@ import AutoExpandingTextarea from "./textarea"
 import { HeaderCompont } from "../../Global/header_component"
 import Link from "next/link"
 import InputComponent from "./container_bootom"
+import { MensagemInput } from "./mensagemInput"
+import { ButtonG } from "../../Global/button"
 export interface mensagemS{
     id:number,
     nome:string,
@@ -21,7 +23,8 @@ export  const mensagem=[
         mensage:[
             
             'Transferencia feita',
-            '200mil kz'
+            '200mil kz',
+            'Feita'
         ]},
         {
             id:2,
@@ -35,6 +38,11 @@ export  const mensagem=[
 ]
 
 export default function Mensage (){
+    const [messages, setMessages] = useState<string[]>([]);
+
+    const handleSendMessage = (message: string) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
+    };
     const [texto, setTexto]=useState<{[key:number]:string}>({})
 
     const [mensagemSelecionda, setMensagemSelecionada]=useState<mensagemS| null>()
@@ -51,24 +59,32 @@ export default function Mensage (){
     return(
       
       
-        <div className="relative   h-screen  shadow-md bg-gray-100  rounded-lg">
+        <div className=" shadow-md bg-gray-100  rounded-lg">
         {
             mensagemSelecionda?
-            <div className=" p-5">
+            <div className="relative  p-3">
                 <header>
                 <X className="cursor-pointer text-sky  "  onClick={()=>setMensagemSelecionada(null)} />
                 </header>
                 <h1 className="text-lg font bold mb-8">{mensagemSelecionda.nome}</h1>
                 
                 <p>{mensagemSelecionda.mensage.map((p,i)=><PagrathMensage key={i}>{p}</PagrathMensage>)}</p>
-       
-                <InputComponent />
+            
+            
+               <ContainerMensage>
+                    <AutoExpandingTextarea/>
+
+                    <ButtonMensage><SendIcon className="text-sky-400"/></ButtonMensage>
+                   
+               </ContainerMensage>
+            
+
                 
                 </div>
                 :
             <>
                 <div className="bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-4 ">
-                <Link className="hidden md:block text-center" href="/Components/User/Mensage/FullScreen"><ExpandIcon  />  </Link>
+                <Link className="hidden md:block text-center" href="/Components/User/Mensage/FullScreen"><ExpandIcon className="cursor-pointer "  />  </Link>
                     <HeaderCompont title="Mensagens" />
                     
                 </div>

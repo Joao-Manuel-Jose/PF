@@ -1,0 +1,53 @@
+O Prisma é uma ferramenta de mapeamento objeto-relacional (ORM) para Node.js e TypeScript, usada para facilitar a interação com bancos de dados relacionais em aplicações web. O Prisma fornece uma abstração de banco de dados com uma API tipada e autocompletada, facilitando o desenvolvimento e a manutenção do código.
+
+Aqui estão alguns dos comandos e conceitos essenciais do Prisma:
+
+npx prisma init:
+
+Esse comando é utilizado para iniciar um novo projeto Prisma em um projeto Node.js. Ele cria a estrutura de arquivos necessária e gera um arquivo schema.prisma no diretório do projeto.
+schema.prisma:
+
+O arquivo schema.prisma é onde você define o modelo de dados do seu aplicativo. Ele descreve a estrutura do banco de dados, incluindo tabelas, relacionamentos e tipos de dados.
+npx prisma generate:
+
+Após definir o schema.prisma, você deve executar este comando para gerar os artefatos do Prisma que serão usados em seu código. Isso inclui as definições de modelo e os métodos de acesso ao banco de dados.
+Modelo Prisma:
+
+O Prisma usa um modelo para representar as tabelas do banco de dados. Você define os modelos no arquivo schema.prisma. Cada modelo corresponde a uma tabela no banco de dados.
+Exemplo de um modelo simples:
+
+prisma
+Copy code
+model User {
+  id    Int      @id @default(autoincrement())
+  email String   @unique
+  name  String?
+}
+npx prisma migrate dev:
+
+Este comando é usado para criar e aplicar migrações no banco de dados. As migrações são usadas para modificar o esquema do banco de dados ao longo do tempo. Este comando executa as migrações automaticamente.
+npx prisma studio:
+
+Inicia o Prisma Studio, uma interface gráfica para explorar e modificar os dados do seu banco de dados. É uma ferramenta útil durante o desenvolvimento.
+Prisma Client:
+
+Após a execução de npx prisma generate, você obtém o Prisma Client, que é uma biblioteca gerada automaticamente para interagir com o banco de dados. Você pode usá-lo em seu código para executar consultas e mutações.
+Exemplo de uso do Prisma Client em Node.js:
+
+javascript
+Copy code
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+async function getUsers() {
+  const users = await prisma.user.findMany();
+  console.log(users);
+}
+
+getUsers().finally(() => prisma.$disconnect());
+Esses são alguns dos comandos e conceitos básicos do Prisma. Ao utilizá-lo, é importante consultar a documentação oficial do Prisma para obter informações detalhadas e exemplos adicionais: Prisma Documentation.
+
+
+
+
+

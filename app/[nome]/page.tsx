@@ -8,7 +8,7 @@ import { ContentOfcanvas,MycontentOfcanvas } from "@/app/Components/Header/User/
 
 
 import Link from "next/link"
-import { Notification } from "../../../Components/User/Notifications/page.tsx"
+
 import { ReactNode, useState } from "react"
 import { ButtonLink } from "@/app/Components/Header/User/link";
 
@@ -29,7 +29,7 @@ export default function User({params}:{
     return(
         
         <>
-        <UserNav>
+        <UserNav >
         {linksIcon.map((link,index)=>{
                             return(
                                 <ButtonLink href={link.href1} key={index}
