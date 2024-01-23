@@ -45,6 +45,7 @@ export default function User({params}:{
         </UserNav>
         <section className="grid  md:grid-cols-12 bg-gray-200  py-5">
         <div className="hidden sm:hidden md:block md:col-span-3 py-4 px-2">
+            
             <ContentOfcanvas nome={user?.name}>
                 
                 {MycontentOfcanvas.map((Content, index)=>(

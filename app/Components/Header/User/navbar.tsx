@@ -1,6 +1,6 @@
 "use client"
 import { ReactNode,useState } from "react";
-import { AlignJustify ,BellIcon,HomeIcon,MessageCircleIcon,X} from 'lucide-react'
+import { AlignJustify ,BellIcon,HomeIcon,MessageCircleIcon,Star,X} from 'lucide-react'
 import { usePathname } from "next/navigation";
 import { Container } from "./container";
 import { MainLink } from "./mainLink";
@@ -18,10 +18,10 @@ import { HomeResult } from "../../User/NUser/homeResult";
 
 
 export const linksIcon = [
-    { name: 'Home', href1: '#', href2:'User/GelsonSantos' ,icone:<HomeIcon size={30} color="#27c5ec" /> ,componente:<HomeResult/>},
+    { name: 'Favoritos', href1: '#', href2:'User/GelsonSantos' ,icone:<Star  size={30} color="#27c5ec" className="h-9"/> ,componente:<HomeResult/>},
     { name: 'Mensagens', href1: '#', href2:'/User/Gelson_Santos/Mensagem', icone:<Badge icon={<MessageCircleIcon size={30} color="#27c5ec"/>}  count={5}/> , componente:<Mensage/>},
     { name: 'Notificações', href1: '#',href2:'Components/User/Notificatios' ,icone:<Badge icon={<BellIcon  size={30} color="#27c5ec" />} count={5}/> , componente:<Notification  props={5} />},
-  
+   
   
     
  
