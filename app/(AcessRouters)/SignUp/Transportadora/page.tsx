@@ -1,12 +1,12 @@
 "use client"
-import { Buttons } from "../button";
+import { Buttons } from "../../../Components/SignUp/AcessRouter/button";
 import { useState, useEffect } from 'react';
-import { Select } from "@/app/(RotasPublicas)/Sign_up/select";
-import { Title } from "@/app/(RotasPublicas)/Sign_up/title";
+import { Select } from "@/app/Components/Global/select";
+import { Title } from "@/app/Components/SignUp/title";
 import Link from "next/link";
-import { Container } from "../Container";
+import { Container } from "../../../Components/SignUp/AcessRouter/Container";
 import { Background } from "./Background";
-import { Input } from "@/app/(RotasPublicas)/Sign_up/input";
+import { Input } from "@/app/Components/SignUp/input";
 export default function Transportadora(){
   interface Province {
     id: string;
@@ -47,24 +47,17 @@ export default function Transportadora(){
 
   }, [selectedProvincia]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (selectedMunicipio) {
-          const response = await fetch(`http://localhost:5000/${selectedProvincia}/${selectedMunicipio}`);
-          const data = await response.json();
-          setComuna([/* Adicione uma opção vazia ou de seleção padrão aqui */, ...data]);
-          console.log(data, comuna);
-        } else {
-          setComuna([]);
-        }
-      } catch (error) {
-        console.error('Erro ao obter a lista de comunas:', error);
-      }
-    };
-  
-    setTimeout(() => {
-      fetchData();
-    }, 200);
+    setTimeout(()=>{
+    if (selectedProvincia&&selectedMunicipio) {
+      fetch(`http://localhost:5000/${selectedProvincia}/${selectedMunicipio}`)
+        .then(response => response.json())
+        .then(data => setComuna([...data]))
+        .catch(error => console.error('Erro ao obter a lista de municípios:', error));
+    } else {
+      setComuna([]); // Se nenhuma província for selecionada, resete a lista de municípios
+    }
+
+  },200)
   
   }, [selectedMunicipio, selectedProvincia]);
   
@@ -121,7 +114,7 @@ export default function Transportadora(){
         disabled={!selectedProvincia || !selectedMunicipio} >
                         <option value="null">Selecione a comuna: </option>
                         {comuna.map((comuna) => (
-          <option key={comuna} value={comuna}>
+          <option key={comuna} value={comuna} >
             {comuna}
             </option>
              ))}

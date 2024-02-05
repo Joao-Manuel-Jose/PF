@@ -1,11 +1,11 @@
 "use client"
-import { Buttons } from "../button";
-import { Input } from "@/app/(RotasPublicas)/Sign_up/input";
-import { Select } from "@/app/(RotasPublicas)/Sign_up/select"; 
-import { Title } from "@/app/(RotasPublicas)/Sign_up/title";
+import { Buttons } from "../../../Components/SignUp/AcessRouter/button";
+import { Input } from "@/app/Components/SignUp/input";
+import { Select } from "@/app/Components/Global/select"; 
+import { Title } from "@/app/Components/SignUp/title";
 import styles from './comprador.module.css'
 import Link from "next/link";
-import { Container } from "../Container";
+import { Container } from "../../../Components/SignUp/AcessRouter/Container";
 export default function Comprador(){
     return(
       <Container className={styles.bunner} >

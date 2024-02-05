@@ -11,25 +11,12 @@ export function LabelSignUp({children,...props}:labelProps){
         {...props}>
             <div className="mx-auto h-10 rounded-2xl
         text-gray-700 outline-none focus:ring-1 shadow bg-white py-2
-      px-2 w-full  flex text-center ">
+      px-2 w-full flex items-center ">
             <FileImageIcon  className="text-sky-400"/>
      
             {children}
             </div>
             </label>
-    )
-
-}
-export function DivSignup({children}:labelProps){
-    return(
-        <div  className="mx-auto h-10 rounded-2xl
-        text-gray-700 outline-none focus:ring-1 shadow bg-white py-2
-      px-2 w-full  flex
-        " >
-         
-     
-            {children}
-            </div>
     )
 
 }

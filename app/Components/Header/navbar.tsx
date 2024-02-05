@@ -10,6 +10,10 @@ import { Linka } from "./link";
 import { Linkb } from "./link2";
 import { AlignJustify ,HomeIcon,X} from 'lucide-react'
 import { usePathname } from "next/navigation";
+import { HeaderContainer } from "./containerHeader";
+import { MainLink } from "./User/mainLink";
+import { ContContent } from "./ContContent";
+import { MainLinkHeader } from "./mainlink";
 
 
 export function Navbar(){
@@ -35,20 +39,12 @@ export function Navbar(){
     }
     return(
         <>
-        <nav className="py-2 z-30 bg-gray-100 stick-top backdrop-blur-xl shadow  w-full border-b border-b-1 border-gary-400">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-                <div className="flex items-center justify-between h-16">
-                    <div className="flex items-center">
-                        <div className="flex-shrink-0">
-                            <Link href="/"className="  text-black  px-3 py-2 font-medium">
-                            <h1 className="text-2xl text-black font-bold">Tchivala</h1></Link>
-
-
-                        </div>
-
-
-                    </div>
-                    <div className="hidden md:block">
+        <HeaderContainer>
+        
+            <ContContent>
+                <MainLinkHeader/>
+               
+                <div className="hidden md:block">
                         <div className=" ml-4 flex items-center space-x-4">
                             {links.map((link,index)=>{
                                 return(
@@ -80,14 +76,11 @@ export function Navbar(){
                         </button>
 
                     </div>
-                    
 
 
-                </div>
-
-            </div>
+            </ContContent>
             {isClick &&(
-                <div className="md:hidden ">
+                <div className="md:hidden bg-gray-50">
                     <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3" >
 
                         {links.map((link,index)=>{
@@ -104,7 +97,8 @@ export function Navbar(){
 
             )}
 
-        </nav>
+        </HeaderContainer>
+        
         </>
     )
 }

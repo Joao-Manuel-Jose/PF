@@ -2,7 +2,7 @@
 
  interface FormData {
   nif: string;
-  iban: string;
+  email: string;
   transporte: boolean,
   telefone:string,
   nome: string;
@@ -15,14 +15,34 @@
 }
  interface GestorData{
   nome:string,
-  email:string,
+ 
   foto: File | null,
   pasword:string
 }
   
-export async function cadastrarGestor(GestorData:GestorData) {
-  const endpoint = 'http://localhost:4000/cadastro/gestor';
-  
+export async function cadastrarGestor(GestorData:GestorData,id:number) {
+  const endpoint = `http://localhost:4000/cadastro/gestor/${id}`;
+  const formDataToSend = new FormData();
+  try{
+  Object.entries(GestorData).forEach(([key, value]) => {
+    if (key === 'foto' && value) {
+      formDataToSend.append(key, value as File, (value as File).name);
+    } else {
+      formDataToSend.append(key, value.toString());
+    }
+  });
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    body: formDataToSend,
+  });
+  if (!response.ok) {
+    throw new Error('Erro ao cadastrar gestor');
+  }
+  console.log(response.json)
+  return response.json();}
+  catch(error){
+    alert(error)
+  }
 }
   
 export async function cadastrarFazenda(formData: FormData)  {
@@ -45,6 +65,8 @@ export async function cadastrarFazenda(formData: FormData)  {
   if (!response.ok) {
     throw new Error('Erro ao cadastrar fazenda');
   }
+  console.log(response.json)
+  const {token, my}=await response.json()
+  return ({token, my})
 
-  return response.json();
 };

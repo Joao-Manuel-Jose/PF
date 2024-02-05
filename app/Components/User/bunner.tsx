@@ -5,7 +5,7 @@ export function BunnerU({children}:{
     children:ReactNode
 }){
     return(
-        <div className="shadow-lg col-span-6 w-full  p-10 ">
+        <div className=" col-span-6 w-full py-0  px-0 md:py-3 md:px-2 ">
            
 
             {children}

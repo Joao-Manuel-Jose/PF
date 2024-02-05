@@ -52,7 +52,8 @@ export default function UesrN(params:{
 
     }
      const UserNMycontentOfcanvasModal=[
-        { name: ' Perfil',  componente:<ModalPerfil isOpen={componenteOfcanvas} onClose={onClose}/> },
+        { name: ' Perfil',  componente:<ModalPerfil isOpen={componenteOfcanvas
+        } onClose={onClose}/> },
         {
           name: ' Produtoras',
           href: '#',
@@ -142,7 +143,7 @@ export default function UesrN(params:{
             
                 }
         </div>
-        {console.log(componenteOfcanvas)}
+      
         </>
 
     )

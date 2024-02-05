@@ -7,20 +7,23 @@ import Mensage from "../../User/Mensage/page";
 
 
 export const MycontentOfcanvas=[
-    { name: ' Inserir Produto ', href: '#', icone:<PlusCircle  size={30} />, componente:<Notification props={5}/> },
+    { name: 'Inserir Produto', href: '#', icone:<PlusCircle  size={30} strokeWidth={1.3} />, componente:<Notification props={5}/> },
     {
       name: 'Visualizar Produtos',
       href: '#',icone:<Eye color="#0b0c38"
-      size={30}
+      size={30} strokeWidth={1.4}
       />,
       componente:<Notification props={5}/>
     
     },
-    { name: 'Gerar Relatório', href: '#' , icone:<FileText color="#000000" size={30} />,  componente:<Mensage/>} ,
-    {name:'Editar Produto', href:'#', icone:<ClipboardEdit color="#0b0c38" size={30} />,  componente:<Notification props={5}/>},
-    {name:'Promover produto',href:'#', icone:<Sparkles color="#c4da1b" size={30} />,  componente:<Notification props={5}/>},
-    {name:'Vericar Rendimento',href:'#', icone:<BarChart3 color="#2c12f3"  size={30} />, componente:<Notification props={5}/>},
-    {name:'Sair',href:'/', icone:<LogOut size={30} />, componente:<Notification props={5}/>}
+    {name:'Cadastrar Afilhada', href:'#', icone:<ClipboardEdit color="#0b0c38" size={30} strokeWidth={1.3} />,  componente:<Notification props={5}/>},
+    {name:'Perfil',href:'#', icone:<CircleUserRoundIcon  size={30} strokeWidth={1.3} />,  componente:<Notification props={5}/>},
+    {name:'Vericar Rendimento',href:'#', icone:<BarChart3   size={30} strokeWidth={1.5}/>, componente:<Notification props={5}/>},
+    { name: 'Gerar Relatório', href: '#' , icone:<FileText color="#000000" size={30}  strokeWidth={1.4} />,  componente:<Mensage/>} ,
+    
+   
+    
+    {name:'Sair',href:'/', icone:<LogOut size={30} strokeWidth={1.5}  />, componente:<Notification props={5}/>}
 ]
 
 
@@ -29,7 +32,7 @@ export const MycontentOfcanvas=[
 
 export function ContentOfcanvas({children, nome}:{
     children:ReactNode,
-    nome:string | null
+    nome:string | undefined
 }){
     return(
         <>

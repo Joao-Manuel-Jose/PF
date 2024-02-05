@@ -1,48 +1,80 @@
 "use client"
-import { Buttons } from "../button";
+import { Buttons } from "../../../Components/SignUp/AcessRouter/button";
 import styles from './fazenda.module.css';
 import Link from "next/link";
-import { Container } from "../Container";
-import { Input } from "@/app/(RotasPublicas)/Sign_up/input";
-import { Select } from "@/app/(RotasPublicas)/Sign_up/select";
-import { Title } from "@/app/(RotasPublicas)/Sign_up/title";
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { Container } from "../../../Components/SignUp/AcessRouter/Container";
+import { Input } from "@/app/Components/SignUp/input";
+import { Select } from "@/app/Components/Global/select";
+import { Title } from "@/app/Components/SignUp/title";
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
-import {  LabelSignUp } from "@/app/(RotasPublicas)/Sign_up/label";
+
 import { ButtonG } from "@/app/Components/Global/button";
-import { cadastrarFazenda } from "@/app/api/Cadastro/route";
+import { cadastrarFazenda, cadastrarGestor } from "@/app/api/Cadastro/route";
+import { useAuth } from "@/app/(User)/user";
+import { redirect } from "next/navigation";
+import { LabelSignUp } from "@/app/Components/Global/labelSignUp";
 
-export interface FormData {
+
+ export interface Fazenda {
+  token:string
+  id: number;
   nif: string;
-  iban: string;
+ 
+  telefone: string;
+  nome: string;
+  provincia: string;
+  email:string
+  municipio: string;
+  comuna: string;
+  bairro: string;
+  foto:string;
+  rua: string;
+  // Adicione outros campos conforme necessário
+}
+export interface FormData {
+  id?:number
+  nif: string;
+ 
+  token:string
   transporte: boolean,
   telefone:string,
   nome: string;
   provincia: string;
   municipio: string;
   comuna:string,
+  email:string
   bairro: string;
   rua: string;
+  pasword?:string
+  fto:string;
   foto: File | null;
 }
 export interface GestorData{
   nome:string,
-  email:string,
+ 
   foto: File | null,
   pasword:string
 }
 export default function Fazenda() {
-
+  const [userAuthenticate, setUserAuthenticate]=useState('')
+   const {  login } = useAuth();
+  const [provincias, setProvincias] = useState([]);
+  const [municipios, setMunicipios] = useState([]);
+  const [comuna, setComuna] = useState<string[]>([])
    const[sucessFazenda, setSucessFazenda]=useState<boolean>(false)
+  
    const[gestorData,setGestorData]=useState<GestorData>({
     nome:'',
-    email:'',
+  
     pasword:'',
     foto:null
    })
   const [formData, setFormData] = useState<FormData>({
+    token:'',
+    fto:'',
     nif: '',
-    iban: '',
+    email: '',
     transporte: false,
     nome: '',
     provincia: '',
@@ -53,6 +85,56 @@ export default function Fazenda() {
     rua: '',
     foto: null,
   });
+  if(userAuthenticate){
+    redirect(`../../User/${userAuthenticate}`)
+  }
+ 
+  //selects
+  useEffect(() => {
+    // Faz a requisição para o servidor para obter a lista de províncias
+    // Substitua isso por uma chamada real à API do seu servidor
+    setTimeout(()=>{
+      fetch('http://localhost:5000/provinces')
+      .then(response => response.json())
+      .then(data => setProvincias(data))
+      .catch(error => console.error('Erro ao obter a lista de províncias:', error));
+
+    },1000)
+    
+  }, []);
+  //municipio
+  useEffect(() => {
+   
+    setTimeout(()=>{
+      if (formData.provincia) {
+        fetch(`http://localhost:5000/${formData.provincia}/municipio`)
+          .then(response => response.json())
+          .then(data => setMunicipios(data))
+          .catch(error => console.error('Erro ao obter a lista de municípios:', error));
+      } else {
+        setMunicipios([]); // Se nenhuma província for selecionada, resete a lista de municípios
+      }
+
+    },200)
+
+  }, [formData.provincia]);
+  useEffect(() => {
+   
+    setTimeout(()=>{
+      if (formData.provincia && formData.municipio) {
+        fetch(`http://localhost:5000/${formData.provincia}/${formData.municipio}`)
+          .then(response => response.json())
+          .then(data => setComuna([...data]))
+          .catch(error => console.error('Erro ao obter a lista de municípios:', error));
+      } else {
+        setComuna([]); // Se nenhuma província for selecionada, resete a lista de municípios
+      }
+
+    },200)
+
+  },  [formData.municipio,formData.provincia]);
+
+  //End
 //Fazenda
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -80,10 +162,20 @@ export default function Fazenda() {
     e.preventDefault();
 
     try {
-      const response = await cadastrarFazenda(formData);
-      console.log(response);
-      if(response){
+      const {token,my} = await cadastrarFazenda(formData);
+      const myRes:Fazenda=my
+    
+      if(token&&my){
+        setFormData(prev=>({
+          ...prev,
+          id:myRes.id,
+          fto:myRes.foto,
+          token:token
+
+        }))
+       
         setSucessFazenda(true)
+        alert(formData.id)
      
 
       }
@@ -103,7 +195,7 @@ export default function Fazenda() {
 
     setGestorData((prevData) => ({
       ...prevData,
-      [name]: type === 'number' ? Number(value) : value,
+      [name]: value
     }));
   };
   function handleFileChangeGestor(e: ChangeEvent<HTMLInputElement>){
@@ -112,7 +204,7 @@ export default function Fazenda() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData((prevData) => ({
+        setGestorData((prevData) => ({
           ...prevData,
           foto: file,
         }));
@@ -124,14 +216,33 @@ export default function Fazenda() {
     e.preventDefault();
 
     try {
-      const response = await cadastrarFazenda(formData);
-      console.log(response)
-      if(response){
-        setSucessFazenda(true)
-     
-     
+      if(formData.id){
+        const response = await cadastrarGestor(gestorData,formData.id);
+        const myRes:GestorData=response
+        if(response){
+          setFormData(prev=>({
+            ...prev,
+          
+            pasword:myRes.pasword
 
+            
+  
+          }))
+          if(formData.token){
+            await login(formData.token, formData);
+            setUserAuthenticate(formData.nome)
+            console.log(userAuthenticate)
+
+          }
+         
+       
+          
+       
+       
+  
+        }
       }
+     
    
 
       
@@ -142,34 +253,8 @@ export default function Fazenda() {
     }
   };
 
-
-  
-
-  {/*const cadastrarFazenda = async (formData: FormData) => {
-    const endpoint = 'http://localhost:4000/cadastro'; // Substitua com sua rota de cadastro real
-
-    const formDataToSend = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key === 'foto' && value) {
-        formDataToSend.append(key, value as File, (value as File).name);
-      } else {
-        formDataToSend.append(key, value.toString());
-      }
-    });
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      body: formDataToSend,
-    });
-
-    if (!response.ok) {
-      throw new Error('Erro ao cadastrar fazenda');
-    }
-
-    return response.json();
-  };*/}
-
   return (
+    
       <Container className={styles.bunner} >
         {sucessFazenda?
         <>
@@ -183,11 +268,11 @@ export default function Fazenda() {
                   <Input  placeholder="Nome: " type="text" name='nome' value={gestorData.nome} onChange={handleChangeGestor} />
                   
                   
-                  <Input placeholder="Email :" type="email"  name="email" value={gestorData.email}  onChange={handleChangeGestor}  />
-                  <LabelSignUp htmlFor="fotoG">Foto:{gestorData.foto?<span>selecionada</span>: <span> não selecionada</span>}</LabelSignUp>
-                  <Input placeholder="password:" type="password" name="pasword" value={gestorData.pasword}  onChange={handleChangeGestor}/ >
+                  
+                  <LabelSignUp htmlFor="fotog">Foto:{gestorData.foto?<span>selecionada</span>: <span> não selecionada</span>}</LabelSignUp>
+                  <Input placeholder="password:" type="password"  name="pasword" value={gestorData.pasword}  onChange={handleChangeGestor}/ >
                     
-                   <Input type="file" id="fotoG" className="hidden"  title="Insira a sua foto"  accept="image/*" onChange={handleFileChangeGestor} />
+                   <Input type="file" id="fotog" className="hidden"   title="Insira a sua foto" name="foto"  accept="image/*" onChange={handleFileChangeGestor} />
                    
                     
                   
@@ -214,9 +299,9 @@ export default function Fazenda() {
                     
                    <Input type="file" id="foto" className="hidden"  title="Insira a sua foto"  accept="image/*" name="foto" onChange={handleFileChange} />
                    
-                    <LabelSignUp htmlFor="foto">Foto:{formData.foto?<span>selecionada</span>: <span> não selecionada</span>}</LabelSignUp>
-                    <Input placeholder="Contacto:" type="tel"  value={formData.telefone} onChange={handleChange} name='telefone' />
-                    <Input placeholder="Iban:" type="text"  value={formData.iban} onChange={handleChange} name='iban' />
+                    <LabelSignUp htmlFor="foto">Foto:{formData.foto?<span >selecionada</span>: <span > não selecionada</span>}</LabelSignUp>
+                    <Input placeholder="Contacto:" type="tel"  value={formData.telefone} onChange={handleChange} name='telefone'  pattern="[0-9]{9}" title="O número deve conter 9digitos"  />
+                    <Input placeholder="Email:" type="email"  value={formData.email} onChange={handleChange} name='email' />
                    
                     
                   
@@ -226,21 +311,35 @@ export default function Fazenda() {
               <div className="grid gap-4 ">
               <Select  name="provincia" value={formData.provincia} onChange={handleChange}>
                               <option value="">Selecione a província: </option>
-                              <option value="l">Bengo </option>
+                              {provincias.map((provincia) => (
+                               <option key={provincia} value={provincia}>
+                                              {provincia}
+                                </option>
+                                  ))}
                         
 
                       </Select> 
-                      <Select name="municipio" value={formData.municipio} onChange={handleChange}>
+                      <Select name="municipio" value={formData.municipio} onChange={handleChange} disabled={!formData.provincia}>
                         <option value="">Selecione o Município: </option>
-                        <option value="l">Bengo </option>
+                        {municipios.map((municipio) => (
+                          <option key={municipio} value={municipio}>
+                            {municipio}
+                          </option>
+                           ))
+                        }
                        
 
                       </Select>
                   
                 
-                      <Select name="comuna" value={formData.comuna} onChange={handleChange}>
+                      <Select name="comuna" value={formData.comuna} onChange={handleChange} disabled={!formData.provincia || !formData.municipio}>
                         <option value="">Selecione a comuna: </option>
-                        <option value="l">Bengo </option>
+                        {comuna.map((comuna) => (
+                          <option key={comuna} value={comuna}>
+                            {comuna}
+                          </option>
+                               ))
+                        }
                        
 
                       </Select>

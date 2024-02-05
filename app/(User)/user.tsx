@@ -1,11 +1,24 @@
 "use client"
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 
-interface User {
-  name: string;
-  password: string;
-  email: string;
-  isLogged: boolean;
+export interface User {
+  id?:number
+  nif: string;
+
+  token?:string
+  transporte: boolean,
+  telefone:string,
+  nome: string;
+  provincia: string;
+  municipio: string;
+  comuna:string,
+  email:string
+  bairro: string;
+  rua: string;
+  pasword?:string
+  fto:string;
+  foto: File | null;
+
 }
 
 interface AuthContextProps {
@@ -30,21 +43,30 @@ export function AuthProvider({ children }: AuthContextProps) {
     setToken(newToken);
     // Armazene o token de forma segura, por exemplo, em cookies ou local storage
     localStorage.setItem('OkukulaToken', newToken);
+    localStorage.setItem('OkukulaUser', JSON.stringify(newUser));
+  };
+  const signUp = (newToken: string, newUser: User) => {
+    setUser(newUser);
+    setToken(newToken);
+    // Armazene o token de forma segura, por exemplo, em cookies ou local storage
+    localStorage.setItem('OkukulaToken', newToken);
   };
 
   const logout = () => {
     setUser(null);
     setToken(null);
-    // Remova o token do armazenamento
     localStorage.removeItem('OkukulaToken');
+    localStorage.removeItem('OkukulaUser');  // Adicionado para remover dados do usuário
   };
 
   useEffect(() => {
     // Verifique se há um token armazenado no carregamento
     const storedToken = localStorage.getItem('OkukulaToken');
-    if (storedToken) {
-      // Se encontrar um token, defina o usuário como autenticado
+    const storedUser = localStorage.getItem('OkukulaUser');
+  
+    if (storedToken && storedUser) {
       setToken(storedToken);
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
