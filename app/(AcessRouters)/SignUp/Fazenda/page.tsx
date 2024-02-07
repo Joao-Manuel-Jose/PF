@@ -10,10 +10,11 @@ import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
 
 import { ButtonG } from "@/app/Components/Global/button";
-import { cadastrarFazenda, cadastrarGestor } from "@/app/api/Cadastro/route";
+
 import { useAuth } from "@/app/(User)/user";
 import { redirect } from "next/navigation";
 import { LabelSignUp } from "@/app/Components/Global/labelSignUp";
+import { cadastrarFazenda, cadastrarGestor } from "@/app/api/Cadastro/route";
 
 
  export interface Fazenda {
@@ -35,7 +36,6 @@ import { LabelSignUp } from "@/app/Components/Global/labelSignUp";
 export interface FormData {
   id?:number
   nif: string;
- 
   token:string
   transporte: boolean,
   telefone:string,
@@ -49,10 +49,12 @@ export interface FormData {
   pasword?:string
   fto:string;
   foto: File | null;
+  nomeGestor?:string
+  fotoGestor?:string
 }
 export interface GestorData{
   nome:string,
- 
+  fto?:string
   foto: File | null,
   pasword:string
 }
@@ -218,13 +220,13 @@ export default function Fazenda() {
     try {
       if(formData.id){
         const response = await cadastrarGestor(gestorData,formData.id);
-        const myRes:GestorData=response
+        const myRes:{nome:string,foto:string}=response
         if(response){
           setFormData(prev=>({
             ...prev,
           
-            pasword:myRes.pasword
-
+           nomeGestor:myRes.nome,
+           fotoGestor:myRes.foto
             
   
           }))

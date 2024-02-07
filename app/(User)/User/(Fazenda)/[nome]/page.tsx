@@ -58,14 +58,14 @@ export default function User({params}:{
 
         </UserNav>
         <section className="grid  md:grid-cols-12 bg-gray-200  py-0">
-            <div className="relative hidden sm:hidden md:block md:col-span-3 py-2 px-2 shadow-md">
+            <div className="relative hidden sm:hidden md:block mt-1 rounded-md md:col-span-3 py-2 px-2 shadow-sm bg-gray-100">
             
                     <ContentOfcanvas nome={user?.nome}>
                         
                         {MycontentOfcanvas.map((Content, index)=>(
-                            <li className=" p-2 my-4 rounded-lg" key={index}>
+                            <li className=" p-2 my-3 rounded-lg" key={index}>
                             {Content.name=='Sair'?
-                            <Link className={clsx('absolute bottom-1 p-2 flex items-center text-md justyfy-center  shadow-md rounded-md w-[90%]  hover:bg-blue-300   hover:rounded-lg',
+                            <Link className={clsx('absolute bottom-1 p-2 flex items-center text-md justyfy-center   rounded-md w-[90%]  hover:bg-blue-300   hover:rounded-lg',
                             {
                                 'font-normal':Content.name=='Sair'
                             })
@@ -74,7 +74,7 @@ export default function User({params}:{
                             
                                 {Content.name}
                                 </Link>
-                            :<Link className={clsx('p-2 flex items-center text-md justyfy-center gap-1 shadow-md rounded-md  hover:bg-blue-300   hover:rounded-lg',
+                            :<Link className={clsx('p-2 flex items-center text-md justyfy-center gap-1 shadow-sm text-sm border-b border-gray-300 rounded-md  hover:bg-blue-300   hover:rounded-lg',
                             {
                                 'bg-blue-500 text-white':Content.name==' Inserir produto '
                             })
@@ -97,7 +97,7 @@ export default function User({params}:{
                
             </div>
         
-            <p className="text-center text-xl  my-2 font-bold">{user?.nome}</p>
+            <p className="text-center text-xl  my-2 font-bold">{user?.nome} {user.nomeGestor}</p>
             <article className="text-center sm:text-sm md:text-md font-normal">
              Vendas de Fruta, vegetais à grandes quantidades 
             </article>

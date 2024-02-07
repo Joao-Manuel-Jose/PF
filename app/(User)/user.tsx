@@ -1,5 +1,6 @@
 "use client"
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
+import { GestorData } from '../(AcessRouters)/SignUp/Fazenda/page';
 
 export interface User {
   id?:number
@@ -18,6 +19,8 @@ export interface User {
   pasword?:string
   fto:string;
   foto: File | null;
+  nomeGestor?:string
+  fotoGestor?:string
 
 }
 
