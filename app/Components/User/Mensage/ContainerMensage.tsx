@@ -5,8 +5,8 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement>{
 export function ContainerMensage({ children, ...props }: FormProps) {
     return (
     
-        <div className="   bg-white rounded-2xl shadow-md ring-1 focus:ring-sky-500 p-0">
-          <form method="POST" action="#" className="flex   items-center" {...props}>
+        <div className="    rounded-2xl shadow-md flex items-center justify-center  ps-2 py-2">
+          <form method="POST" action="#" className="flex gap-2  items-center" {...props}>
             {children}
           </form>
         </div>

@@ -1,11 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-
+import boy from '@/public/girl.png'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ContainerImage } from './Container';
 import { Children, ReactNode } from 'react';
+import { ButtonC } from './button'
+import { Title } from '@/app/HumanizingBrands/Title'
+import { Paragraph } from '@/app/HumanizingBrands/Paragraph'
 
 
 
@@ -21,12 +24,18 @@ export default function MainContainer({children1, children2}:{
   
       <motion.div 
         ref={ref}
-        className="hidden lg:h-[666px] xl:h[700px] md:h-[555px] w-[565px] items-center md:flex"
+        className="hidden lg:h-[32rem] xl:h[700px] md:h-[555px] w-[565px] items-center md:flex"
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {children1}
+        <Image
+          className="hidden w-full md:block"
+          src={boy}
+          height={700}
+          width={565}
+          alt="boy"
+        />
       
       </motion.div>
       <div className="flex flex-col items-center justify-center space-y-4 py-20 md:-mt-2 md:items-start md:space-y-6 md:py-0">
@@ -37,8 +46,14 @@ export default function MainContainer({children1, children2}:{
             transition={{ duration: 0.5, delay: 0.2 }}
             className='space-y-4 md:space-y-6'
           >
-            {children2}
-           
+             <Title>Okukula</Title>
+             <p className='text-center md:text-start text-white text-base'>
+              Aqui
+              podes comprar prudutos agricolas e derivados de forma online
+              com a   disponibilidade de <br/>serviços de transportes.
+            </p>
+          
+          <ButtonC>Entrar</ButtonC>
           </motion.div>
         </div>
       </div>

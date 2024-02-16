@@ -34,6 +34,8 @@ export default function Login(){
       telefone:'',
       bairro: '',
       rua: '',
+      nomeGestor:'',
+      fotoGestor:'',
       foto: null,
     });
     if(userAuthenticate){
@@ -62,6 +64,8 @@ export default function Login(){
         comuna:myRes.comuna,
         email:myRes.contacto.email,
         bairro:myRes.bairro,
+        nomeGestor:myRes.gestor.nome,
+        fotoGestor:myRes.gestor.foto,
         rua:myRes.rua,
         foto:null,
         transporte:false

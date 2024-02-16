@@ -63,7 +63,7 @@ export async function cadastrarFazenda(formData: FormData)  {
   });
 
   if (!response.ok) {
-    throw new Error('Erro ao cadastrar fazenda');
+    throw new Error('NIF ou email invalido');
   }
   console.log(response.json)
   const {token, my}=await response.json()

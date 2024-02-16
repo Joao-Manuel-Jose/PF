@@ -21,7 +21,7 @@ export default function SignUp(){
 
     return(<div className='bg-sky-50'>
         
-          <div className="flex justify-center items-center py-10">
+          <div className="flex justify-center items-center py-5">
             
             <div className="grid md:grid-cols-2 justify-center gap-8">
                 {cadastros.map((cadastro, index) => (

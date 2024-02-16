@@ -1,30 +1,27 @@
-import { url } from 'inspector'
-import styles from './bunner.module.css'
-import { Search } from 'lucide-react'
-import { InputB } from './input'
+
 
 
 export function Bunner(){
     return(
-        <div className={styles.bunner}>
-          <h1 className='text-white text-lg text-center'>
-            Pesquisar Produtos do mercado angolano:
+        <div className="bg-[url('/background/comprador2.jpg')] bg-cover bg-center h-[30rem]  grid items-center  justify-center px-1 md:px-2 ">
+          <div className='mt-10'>
+            <h1 className='mt-10 text-center shadow-md text-2xl md:text-4xl w-full text-gray-100 '>
+            Okukula <sub className='lowercase'>Mkt</sub>
+            </h1>
+          </div>
+          
+          <div>
+          <h1 className='text-white text-md sm:text-xl md:text-2xl p-2 rounded-3xl bg-orange-400  font-bold text- my-2'>
+            Busque e compre Produtos do mercado angolano
           </h1>
-    <div className="md:max-w-lg  mx-4 md:mx-auto bg-white p-1 rounded-2xl shadow-md">
-    <form action="#" method="GET" className="flex items-center">
-      <InputB
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Pesquisar..."
-       />
-      <button type="submit" className="flex-shrink-0   text-sm text-blue py-1 px-2 rounded">
-        
-      <Search />
+          <p className='text-center text-sm md:text-sm text-gray-50 font-semibold'>
+            Com a Okukula-market vai cair uma chuva de comida,
+            <br/> mas não vai deixar cair as chapas da casa de nimguém!!
+            </p>
+          </div>
          
-      </button>
-    </form>
-  </div>
+    
+
 
         </div>
     )

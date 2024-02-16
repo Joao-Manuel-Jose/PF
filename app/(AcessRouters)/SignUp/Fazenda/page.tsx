@@ -85,6 +85,8 @@ export default function Fazenda() {
     telefone:'',
     bairro: '',
     rua: '',
+    nomeGestor:'',
+    fotoGestor:'',
     foto: null,
   });
   if(userAuthenticate){
@@ -177,7 +179,7 @@ export default function Fazenda() {
         }))
        
         setSucessFazenda(true)
-        alert(formData.id)
+      
      
 
       }
@@ -185,7 +187,7 @@ export default function Fazenda() {
 
       
     } catch (error) {
-      alert('Dados Invalidos');
+      alert(error);
       console.error(error);
 
     }
@@ -220,20 +222,24 @@ export default function Fazenda() {
     try {
       if(formData.id){
         const response = await cadastrarGestor(gestorData,formData.id);
-        const myRes:{nome:string,foto:string}=response
-        if(response){
-          setFormData(prev=>({
+        const myRes:{nome:string, foto:string}=response
+        if(response)
+        {
+          console.log(response)
+         setFormData(prev=>({
             ...prev,
-          
-           nomeGestor:myRes.nome,
-           fotoGestor:myRes.foto
+          nomeGestor:myRes.nome,
+          fotoGestor:myRes.foto,
             
   
           }))
+          alert(formData.nomeGestor)
+        
+          
           if(formData.token){
             await login(formData.token, formData);
             setUserAuthenticate(formData.nome)
-            console.log(userAuthenticate)
+          
 
           }
          

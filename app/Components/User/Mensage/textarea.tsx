@@ -25,14 +25,16 @@ function AutoExpandingTextarea({ className }:AutoExpandingTextareaProps){
   };
 
   return (
+    <div className='relative'>
     <textarea
       ref={textareaRef}
-      className={`resize-none h-14  mx-auto  w-[100%] rounded-2xl
-      text-gray-700 outline-none   bg-white py-1 
+      className={`resize-none h-8 min-h-10 max-h-36  mx-auto  w-full  rounded-2xl
+      text-gray-700 outline-none   bg-green-100 py-1 
     px-2 md:w-full ${className || ''}`}
       value={text}
       onChange={handleInputChange} required
     />
+    </div>
   );
 };
 
