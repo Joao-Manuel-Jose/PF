@@ -40,6 +40,7 @@ export  default function ModalCadProduto({ isOpen,onClose}:modalP){
    const [status,setStatus]=useState<String | null>(null)
    const [product, setProduct]=useState<ProductData>({
       nome:'',
+      id:0,
       qualidade:0,
       quantidade:undefined,
       quantidadeS:undefined,

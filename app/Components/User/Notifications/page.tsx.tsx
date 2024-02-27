@@ -28,7 +28,7 @@ export function Notification({props}:{props:number}){
     ]
     return(<>
       
-            <div className="shadow-md bg-gray-100  rounded-lg">
+            <div className="shadow-md bg-gray-50  rounded-lg">
             <div className="bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-5 ">
                 
                 <HeaderCompont title="Notificações" />

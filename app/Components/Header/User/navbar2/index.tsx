@@ -24,7 +24,7 @@ export const linksIconN= [
   export function UserNavN({children, data}:{
     children:ReactNode,
     data:ContentOfcanvas[]
-}, ){
+}){
      const [isClick, setIsclick]=useState(false)
       const pathname=usePathname()
     function handleClick(){

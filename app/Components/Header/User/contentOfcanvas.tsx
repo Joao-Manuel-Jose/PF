@@ -1,4 +1,4 @@
-import { CircleUserRoundIcon, ClipboardListIcon } from "lucide-react";
+import { CircleUserRoundIcon, ClipboardListIcon, LucideCreditCard } from "lucide-react";
 import {  ReactNode } from "react";
 import { BarChart3, Eye, FileText, 
      LogOut ,PlusCircle} from "lucide-react"
@@ -7,23 +7,24 @@ import Mensage from "../../User/Mensage/page";
 
 
 export const MycontentOfcanvas=[
-    { name: 'Inserir Produto', href: '#', icone:<PlusCircle  size={30} strokeWidth={1.2} />  },
+    { name: 'Inserir Produto', href: '#', icone:<PlusCircle   strokeWidth={1.2} />  },
     {
-      name: 'Visualizar Produtos',
+      name: 'Produtos',
       href: '#',icone:<Eye 
-      size={30} strokeWidth={1.2}
+       strokeWidth={1.2}
       />,
      
     
     },
-    {name:'Cadastrar Afilhada', href:'#', icone:<ClipboardListIcon color="#0b0c38" size={30} strokeWidth={1.2} /> },
-    {name:'Perfil',href:'#', icone:<CircleUserRoundIcon  size={30} strokeWidth={1.2} /> },
-    {name:'Vericar Rendimento',href:'#', icone:<BarChart3   size={30} strokeWidth={1.2}/> },
-    { name: 'Gerar Relatório', href: '#' , icone:<FileText  size={30}  strokeWidth={1.2} />} ,
+    {name:'Pagamneto', href:'#', icone:<LucideCreditCard    className="text-green-600 text-md"  strokeWidth={1.2} /> },
+    {name:'Cadastrar afilhada', href:'#', icone:<ClipboardListIcon color="#0b0c38"  strokeWidth={1.2} /> },
+    {name:'Perfil',href:'#', icone:<CircleUserRoundIcon  strokeWidth={1.2} /> },
+    {name:'Vericar Rendimento',href:'#', icone:<BarChart3   strokeWidth={1.2}/> },
+    { name: 'Gerar Relatório', href: '#' , icone:<FileText   strokeWidth={1.2} />} ,
     
    
     
-    {name:'Sair',href:'/', icone:<LogOut size={30} strokeWidth={1.2}  /> }
+    {name:'Sair',href:'/', icone:<LogOut strokeWidth={1.2}  /> }
 ]
 
 

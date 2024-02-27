@@ -11,7 +11,7 @@ export function PicUser({src}:{
             <span className="absolute-inset-1.5"></span>
             <span className="sr-only">Open user menu</span>
   
-            <Image src={src} alt="usuario" width={250} height={250} className=" h-24 w-24 sm:h-40 sm:w-40 rounded-full"/>
+            <Image src={src} alt="usuario" width={250} height={250} className=" h-24 w-24 sm:h-40 sm:w-40 rounded-full" priority placeholder="blur" blurDataURL="blur" />
             </button>
           </div>
         </div>

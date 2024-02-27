@@ -23,7 +23,7 @@ export default function SignUp(){
         
           <div className="flex justify-center items-center py-5">
             
-            <div className="grid md:grid-cols-2 justify-center gap-8">
+            <div className="grid md:grid-cols-2 justify-center gap-4 mx-3 md:gap-8">
                 {cadastros.map((cadastro, index) => (
                 <CardLink key={index} title={cadastro.title} iconSrc={cadastro.iconClass} link={cadastro.link}/>
                      ))}

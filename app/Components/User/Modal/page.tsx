@@ -18,7 +18,7 @@ export function Modal({isOpen,onClose,children,title,bgImg}:modalProps){
  if(isOpen)
     return(
         <ContainerMoodal className={bgImg}>
-        <div className=" bg-gray-100 z-50 shadow-md mb-4 cursor-pointer p-2 pb-3 top-0  border-b border-gray- rounded-sm ">
+        <div className=" bg-gray-100 z-50 shadow-md mb- cursor-pointer p-2 pb-3 top-0  border-b border-gray- rounded-sm ">
             <X className="text-red-700  text-md "  onClick={()=>setTimeout(()=>{
             onClose()
         },300)}/>

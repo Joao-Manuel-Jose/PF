@@ -5,7 +5,7 @@ import styles from './login.module.css'
 import { FormEvent, useState } from "react";
 import LoginUser from "@/app/api/route";
 import { redirect } from "next/navigation";
-import {  User, useAuth } from "@/app/(User)/user";
+import {  User, client, useAuth } from "@/app/(User)/user";
 import { Container } from "../../Components/SignUp/AcessRouter/Container";
 import { InputL } from "@/app/Components/Login/input";
 import { AtSignIcon,  LockKeyholeIcon } from "lucide-react";
@@ -21,8 +21,25 @@ export default function Login(){
    const [state,setState]=useState(true)
     const [email,setEmail]=useState('')
     const [pasword,setpasword]=useState('')
+    const [client, setClient] = useState<client>({
+      token:'',
+      distrito:'',
+      fto:'',
+      nif: '',
+      email: '',
+      transporte: false,
+      nome: '',
+      provincia: '',
+      municipio: '',
+      comuna:'',
+      telefone:'',
+      bairro: '',
+      rua: '',
+      foto: null,
+    });
     const [formData, setFormData] = useState<User>({
       token:'',
+      distrito:'',
       fto:'',
       nif: '',
       email: '',
@@ -39,7 +56,10 @@ export default function Login(){
       foto: null,
     });
     if(userAuthenticate){
+      if(userAuthenticate=='fazenda')
       redirect(`User/${userAuthenticate}`)
+    else if(userAuthenticate=='cliente')
+    redirect('User/NUser')
     }
   
    
@@ -49,31 +69,69 @@ export default function Login(){
     try {
       
      const {token, my}=  await LoginUser({email,pasword});
-     const myRes:Fazenda=my
+     const myRes=my
      if(token&&my){
-      console.log(myRes)
-     await setFormData({
+      if(my.type_g=='fazenda'){
+      await setFormData({
         token:myRes.token,
         fto:myRes.foto,
         id:myRes.id,
+        distrito:myRes.distrito,
         nif:myRes.nif,
-        telefone:myRes.telefone,
+        telefone:myRes.contacto.telefone,
         nome:myRes.nome,
         provincia:myRes.provincia,
         municipio:myRes.municipio,
+        type:myRes.type_g,
         comuna:myRes.comuna,
         email:myRes.contacto.email,
         bairro:myRes.bairro,
+        descricao:myRes.descricao,
+        iban:myRes.iban,
+        whatsapp:myRes.contacto.whatsapp,
         nomeGestor:myRes.gestor.nome,
         fotoGestor:myRes.gestor.foto,
         rua:myRes.rua,
         foto:null,
-        transporte:false
+        transporte:myRes.transporte
 })
-     
-      await login(token, formData);
-      setUserAuthenticate(formData.nome)
+     if(formData.type){
+      await login(token ,formData.type,undefined,formData);
+      setUserAuthenticate(formData.type)
+
+     }
+      
       console.log(myRes)
+    }else  if(my.type_g=='cliente'){
+      await setClient({
+        token:token,
+        fto:myRes.foto,
+        id:myRes.id,
+        distrito:myRes.distrito,
+        nif:myRes.nif,
+        telefone:myRes.contacto.telefone,
+        nome:myRes.nome,
+        provincia:myRes.provincia,
+        municipio:myRes.municipio,
+        type:myRes.type_g,
+        comuna:myRes.comuna,
+        email:myRes.contacto.email,
+        bairro:myRes.bairro,
+  
+        iban:myRes.iban,
+        whatsapp:myRes.contacto.whatsapp,
+        rua:myRes.rua,
+        foto:null,
+        transporte:myRes.transporte
+})
+     if(client.type){
+      await login(token,client.type,client);
+      setUserAuthenticate(client.type)
+
+     }
+  
+
+    }
      }
      else{
       setState(false)

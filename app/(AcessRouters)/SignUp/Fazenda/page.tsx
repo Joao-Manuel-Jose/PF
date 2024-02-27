@@ -21,7 +21,7 @@ import { cadastrarFazenda, cadastrarGestor } from "@/app/api/Cadastro/route";
   token:string
   id: number;
   nif: string;
- 
+ type_g:string
   telefone: string;
   nome: string;
   provincia: string;
@@ -49,6 +49,7 @@ export interface FormData {
   pasword?:string
   fto:string;
   foto: File | null;
+  type?:string
   nomeGestor?:string
   fotoGestor?:string
 }
@@ -174,7 +175,8 @@ export default function Fazenda() {
           ...prev,
           id:myRes.id,
           fto:myRes.foto,
-          token:token
+          token:token,
+          type:myRes.type_g
 
         }))
        
@@ -236,9 +238,15 @@ export default function Fazenda() {
           alert(formData.nomeGestor)
         
           
-          if(formData.token){
-            await login(formData.token, formData);
-            setUserAuthenticate(formData.nome)
+          if(formData.token && formData.type){
+            console.log(formData)
+            try{
+              await login(formData.token,'fazenda',undefined,formData);
+              setUserAuthenticate(formData.nome)
+            }catch(error){
+              alert(error)
+            }
+           
           
 
           }
@@ -287,7 +295,7 @@ export default function Fazenda() {
         
           </div>
           <div className="flex justify-center">
-                       <ButtonG type="submit" color="bg-orange-300">Enviar</ButtonG>
+                       <ButtonG type="submit" color="bg-orange-300" disabled={gestorData.foto===null || gestorData.pasword==='' || gestorData.nome===''}>Enviar</ButtonG>
               </div>
               
         </form>
@@ -305,7 +313,7 @@ export default function Fazenda() {
                 
                    
                     
-                   <Input type="file" id="foto" className="hidden"  title="Insira a sua foto"  accept="image/*" name="foto" onChange={handleFileChange} />
+                   <Input type="file" id="foto" className="hidden"    accept="image/*" name="foto" onChange={handleFileChange} />
                    
                     <LabelSignUp htmlFor="foto">Foto:{formData.foto?<span >selecionada</span>: <span > não selecionada</span>}</LabelSignUp>
                     <Input placeholder="Contacto:" type="tel"  value={formData.telefone} onChange={handleChange} name='telefone'  pattern="[0-9]{9}" title="O número deve conter 9digitos"  />
@@ -368,7 +376,9 @@ export default function Fazenda() {
               </div>
              
               <div className="flex justify-center">
-                       <ButtonG type="submit" color="bg-orange-300">Enviar</ButtonG>
+                       <ButtonG type="submit" color="bg-orange-300" 
+                       disabled={formData.nome==='' || formData.nif==='' || formData.email=='' || formData.provincia=='' || formData.municipio=='' || formData.comuna=='' || formData.bairro=='' || formData.rua=='' ||
+                        formData.foto==null}>Enviar</ButtonG>
               </div>
              
             </form>

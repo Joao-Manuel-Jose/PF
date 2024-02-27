@@ -1,5 +1,5 @@
 
-import { FileImageIcon, ImageDownIcon, ImagePlusIcon } from "lucide-react";
+import { FileImageIcon, LucideCamera } from "lucide-react";
 import { LabelHTMLAttributes, ReactNode } from "react";
 
 interface labelProps extends LabelHTMLAttributes<HTMLLabelElement>{
@@ -7,7 +7,7 @@ interface labelProps extends LabelHTMLAttributes<HTMLLabelElement>{
 }
 export function LabelSignUp({children,...props}:labelProps){
     return(
-        <label className="cursor-pointer"
+        <label className="cursor-pointer "
         {...props}>
             <div className="mx-auto h-10 rounded-2xl
         text-gray-700 outline-none focus:ring-1 shadow bg-white py-2

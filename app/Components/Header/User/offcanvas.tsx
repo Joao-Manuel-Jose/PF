@@ -11,7 +11,6 @@ export interface ContentOfcanvas {
   name: string;
   href: string;
   icone: ReactNode;
-  componente: ReactNode;
 }
 
 interface OffcanvasProps {

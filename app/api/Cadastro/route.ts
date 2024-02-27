@@ -1,3 +1,4 @@
+import { api, client } from "@/app/(User)/user";
 
 
  interface FormData {
@@ -67,6 +68,33 @@ export async function cadastrarFazenda(formData: FormData)  {
   }
   console.log(response.json)
   const {token, my}=await response.json()
+  return ({token, my})
+
+};
+export async function cadastrarClient(formData: client)  {
+  const endpoint = `${api}/cadastro/client`;
+
+  const formDataToSend = new FormData();
+  Object.entries(formData).forEach(([key, value]) => {
+    if (key === 'foto' && value) {
+      formDataToSend.append(key, value as File, (value as File).name);
+    } else {
+      formDataToSend.append(key, value.toString());
+    }
+  });
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    body: formDataToSend,
+  });
+
+  if (!response.ok) {
+    const errorData=await response.text()
+    throw new Error(`Erro no Servidor:${errorData}`)
+  }
+ 
+  const {token, my}=await response.json()
+  
   return ({token, my})
 
 };

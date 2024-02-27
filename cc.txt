@@ -1,0 +1,35 @@
+ <SideNavUser gestor={<p>{user.nomeGestor}</p>}
+                link={
+                    <Link className={clsx(' p-2 flex items-center text-md justyfy-center   rounded-md w-[90%]  ',
+                    {
+                        'font-normal':true
+                    })
+                    } onClick={logout} href="#" >
+                        
+                    
+                        Log out
+                        </Link>
+                }
+                
+                
+                 >
+                    {
+                        MycontentOfcanvas.map((content,index)=>(
+                            
+                            <Link
+                            key={index}
+                            href={content.href}
+                            className={clsx(
+                              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-white p-3 text-sm font-medium hover:bg-sky-100 hover:text-sky-600  md:flex-none md:justify-start md:p-2 md:px-3 ',
+                              {
+                                'hidden': content.name === 'Sair',
+                              }
+                            )}  onClick={()=>handleClickOfcanvas(content.name)}
+                          >
+                            {content.icone}
+                            <p className="hidden md:block">{content.name}</p>
+                          </Link>
+                        ))
+                    }
+                  
+                </SideNavUser>
