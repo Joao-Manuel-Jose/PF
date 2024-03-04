@@ -164,7 +164,7 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
            <Label>Possui transporte</Label>
          <Select name="transporte" onChange={handleChange} value={userUpadte.transporte}>
                <option value="" >Transporte?</option>
-               <option value='1'>Sim</option>
+               <option value='true'>Sim</option>
                <option value='false'>Não</option>
             </Select>
          </div>

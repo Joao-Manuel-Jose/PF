@@ -1,17 +1,32 @@
 import { LucideShoppingCart, Search } from "lucide-react";
+import { MainLink } from "../Header/User/mainLink";
 
 
 
 export function Bunner(){
     return(
-        <div className="bg-[url('/background/comprador2.jpg')] bg-cover bg-center h-[30rem]  grid items-center  justify-center px-1 md:px-2 ">
-          <div className='mt-10'>
-            <h1 className='mt-10 text-center shadow-md text-2xl md:text-4xl w-full text-gray-100 '>
-            Okukula <sub className='lowercase'>Mkt</sub>
+        <div className="bg-[url('/teste.jpg')] bg-cover bg-center h-[27rem]  ">
+          {/*<div className='mt-10'>
+            <h1 className=' text-center uppercase text-2xl md:text-4xl w-full text-gray-100 '>
+            Okukula-Market
             </h1>
+    </div>*/}
+    <section className="pt-16 grid gap-8 justify-center px-1 md:px-2">
+              <div>
+          <div className="flex justify-center">
+          <div className='mt-10 w-24 bg-white p-2 py-5 rounded-full shadow'>
+            <MainLink/>
           </div>
+          </div>
+   
+    </div>
           
-          <div>
+    <div className=''>
+            <h1 className=' text-center text-2xl md:text-4xl w-full text-gray-100 '>
+            BEM-VINDO
+            </h1>
+    </div>
+          <div className="">
           <h1 className='hidden sm:block text-white text-md sm:text-xl md:text-2xl p-2 rounded-3xl bg-orange-400  font-bold text- my-2'>
             Busque e compre Produtos do mercado angolano
           </h1>
@@ -29,7 +44,8 @@ export function Bunner(){
           </div>
          
     
-
+        
+          </section>
 
         </div>
     )

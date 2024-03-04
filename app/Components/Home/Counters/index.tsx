@@ -12,7 +12,7 @@ const cadastros = [
 export function Counter(){
     return(
         <div className="py-3 ">
-
+            
             <div className="flex items-center justify-center my-1">
             <h1 className="text-center   p-1 rounded-xl uppercase text-md md:text-lg font-normal">A plataforma conta com:</h1>
             </div>

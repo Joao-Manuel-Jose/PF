@@ -17,7 +17,7 @@ const adicional={
     return(<>
         
             <div className=" h-screen shadow-md bg-gray-50  rounded-lg">
-            <div className="stick top-0 bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-5 ">
+            <div className=" bg-gray-50 rounded-md border-b border-gray-300 z-50 shadow-sm p-4 md:p-5 ">
            
                 <HeaderCompont title='Comprado'/>
                 

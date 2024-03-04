@@ -129,7 +129,13 @@ export default function User({params}:{
         <div className="hidden md:block px-2 py-3  md:col-span-3">
                 {componenteselecionado ?
                     linksIcon.filter((component)=>component.name===componenteselecionado)
-                    .map(c=>c.componente)
+                    .map(c=>
+                        <div key={c.name}>{
+                        c.componente
+
+                        }
+                        </div>
+                        )
 
                     :linksIcon[0].componente
                 

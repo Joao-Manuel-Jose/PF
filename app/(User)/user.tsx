@@ -62,6 +62,7 @@ interface AuthContextData {
   user: User | null;
   token: string | null;
   login: (token: string,type:string,client?:client, user?:User) => void;
+  signup: (token: string,type:string,client?:client, user?:User) => void;
   client :client | null;
   
   logout: () => void;
@@ -123,6 +124,32 @@ export function AuthProvider({ children }: AuthContextProps) {
   const [token, setToken] = useState<string | null>(null);
   const [foto,setFoto]=useState<string>('')
 
+  const signup= (newToken: string,type:string,client?:client, newUser?: User) => {
+    if(type==='fazenda'&& newUser){
+      setUser(newUser);
+      setFoto(newUser.fto)
+      setToken(newToken);
+      // Armazene o token de forma segura, por exemplo, em cookies ou local storage
+      localStorage.setItem('OkukulaToken', newToken);
+      localStorage.setItem('OkukulaUser', JSON.stringify(newUser));
+      localStorage.setItem('OkukulaFoto',newUser.fto)
+    }
+    else if(type=='cliente'){
+      if(client){
+        setClient(client);
+        console.log(client)
+        setFoto(client.fto)
+        setToken(newToken);
+        // Armazene o token de forma segura, por exemplo, em cookies ou local storage
+        localStorage.setItem('OkukulaToken', newToken);
+        localStorage.setItem('OkukulaUserClient', JSON.stringify(client));
+        localStorage.setItem('OkukulaFoto',client.fto)
+      }
+    
+  
+    }
+  }
+  
   const login = (newToken: string,type:string,client?:client, newUser?: User) => {
     if(type==='fazenda'&& newUser){
     setUser(newUser);
@@ -305,6 +332,7 @@ export function AuthProvider({ children }: AuthContextProps) {
     updateUserPhoto,
     login,
     logout,
+    signup,
     setUser,
     updateUser
   };

@@ -65,13 +65,13 @@ export default function UesrN(){
          })}
 
         </UserNavN>
-        <section className="grid grid-cols-1 p-2  md:grid-cols-12 bg-gray-200  py-">
+        <section className="grid grid-cols-1   md:grid-cols-12 bg-gray-200  py-">
         <div className="hidden md:block md:col-span-3  ">
            <SideNavUser gestor={<p>{client.nome}</p>} link="Sair" homeLink="/User/NUser">
             <SideNavUserNav/>
             <div className="hidden h-auto w-full grow rounded-md bg-white md:block"></div>
        
-       <Link  className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-white p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3" href='/' onClick={logout} >
+       <Link  className="flex h-[48px] w-full  items-center justify-center gap-2 rounded-md bg-white p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3" href='/' onClick={logout} >
          <LogOutIcon strokeWidth={1.2} className="w-6" />
          Sair
        </Link>
@@ -98,7 +98,7 @@ export default function UesrN(){
             </ContentOfcanvas>
             
                 </div>*/}
-        <section className="col-span-6">
+        <section className="col-span-6 mx-0 px-0 sm:px-2">
         <div className="mb-1 p-3 sm:p-4 shadow sm:shadow-none bg-gray-50 sm:bg-transparent rounded-none sm:rounded-xl">
             <p className="px-6 sm:text-center md:text-start text-sm ">Pesquisar produtos</p>
             <Form>
@@ -109,7 +109,7 @@ export default function UesrN(){
                 
             </Form>
             </div>
-        <section className="bg-gray-100 shadow-sm w-auto md:w-full  p-2 rounded-xl mx-0 md:mx-1">
+        <section className="bg-gray-100 shadow-sm w-auto md:w-full  p-2 rounded-xl mx-0">
             <div className="flex justify-center " >
                 <PicUser src={`/girl.png`} />
                 

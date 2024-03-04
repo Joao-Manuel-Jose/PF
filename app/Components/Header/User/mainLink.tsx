@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function MainLink(){
     return(
-        <Link href="#"className=" flex flex-col gap-0  text-white  font-medium">
+        <Link href="/"className=" flex flex-col gap-0  text-white  font-medium">
         <p className="text-[12px] text-center px-[4px] font-semibold bg-orange-300 rounded-lg">
            Okukula
           

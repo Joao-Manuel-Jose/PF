@@ -15,7 +15,7 @@ export function CounterHome(){
         <div className="py-3 ">
 
             <div className="flex items-center justify-center my-1">
-            <h1 className="text-center   p-1 rounded-xl uppercase text-md md:text-lg text-white font-normal">A plataforma conta com:</h1>
+            <h1 className="text-center   p-1 rounded-xl uppercase text-md md:text-lg mb-3 font-normal">A plataforma conta com:</h1>
             </div>
             
             <div className="mx-1 flex justify-center items-center  ">

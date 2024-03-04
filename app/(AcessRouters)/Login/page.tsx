@@ -2,7 +2,7 @@
 import Link  from "next/link";
 import { Title } from "@/app/Components/SignUp/title"; 
 import styles from './login.module.css'
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import LoginUser from "@/app/api/route";
 import { redirect } from "next/navigation";
 import {  User, client, useAuth } from "@/app/(User)/user";
@@ -17,7 +17,7 @@ import { Fazenda } from "../SignUp/Fazenda/page";
 export default function Login(){
 
    const [userAuthenticate, setUserAuthenticate]=useState('')
-   const { user, login } = useAuth();
+   const { login } = useAuth();
    const [state,setState]=useState(true)
     const [email,setEmail]=useState('')
     const [pasword,setpasword]=useState('')
@@ -55,12 +55,7 @@ export default function Login(){
       fotoGestor:'',
       foto: null,
     });
-    if(userAuthenticate){
-      if(userAuthenticate=='fazenda')
-      redirect(`User/${userAuthenticate}`)
-    else if(userAuthenticate=='cliente')
-    redirect('User/NUser')
-    }
+  
   
    
     async function HandleLogin(e:FormEvent){
@@ -71,8 +66,9 @@ export default function Login(){
      const {token, my}=  await LoginUser({email,pasword});
      const myRes=my
      if(token&&my){
+    
       if(my.type_g=='fazenda'){
-      await setFormData({
+      setFormData({
         token:myRes.token,
         fto:myRes.foto,
         id:myRes.id,
@@ -97,7 +93,7 @@ export default function Login(){
 })
      if(formData.type){
       await login(token ,formData.type,undefined,formData);
-      setUserAuthenticate(formData.type)
+      await setUserAuthenticate(formData.type)
 
      }
       
@@ -146,6 +142,16 @@ export default function Login(){
        
 
     }
+    useEffect(()=>{
+      if(userAuthenticate){
+        if(userAuthenticate=='fazenda')
+        redirect(`User/${userAuthenticate}`)
+      else if(userAuthenticate=='cliente')
+      redirect('User/NUser')
+      }
+
+    },[userAuthenticate])
+ 
     return(
       <Container className={styles.bg} >
             <Title>Login</Title>
@@ -180,4 +186,5 @@ export default function Login(){
      
     
     )
+
 }

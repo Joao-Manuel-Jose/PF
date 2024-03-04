@@ -1,11 +1,11 @@
-import { modalP } from "@/app/(User)/User/NUser/[params]/modal/Fazenda/page"
+import { modalP } from "@/app/(User)/User/NUser/modal/Fazenda/page"
 import { useAuth } from "@/app/(User)/user"
 import { Modal } from "@/app/Components/User/Modal/page"
 import { useEffect, useState } from "react"
 import { ProductData } from "../CadastroProduto/page"
 import Image from "next/image"
 import { motion, useAnimation } from "framer-motion";
-import { LucideArchiveX, LucideArrowLeftCircle, LucideArrowRightCircle, LucideClipboardSignature } from "lucide-react"
+import { LucideArchiveX, LucideArrowLeftCircle, LucideArrowRightCircle, LucideClipboardSignature, LucideTrash, LucideTrash2 } from "lucide-react"
 import clsx from "clsx"
 import Swal from 'sweetalert2';
 import { LinkG } from "@/app/Components/Global/link"
@@ -13,7 +13,7 @@ function TableRow({ p, i, currentPage, itemsPerPage,onDelete }:{p:ProductData,i:
     const controls = useAnimation();
   
     useEffect(() => {
-        controls.start({ opacity: 1, transition: { duration: 1.7, delay: i * 0.4 } });
+        controls.start({ opacity: 1, transition: { duration: 1.7, delay: i * 0.1} });
     }, [controls, i, p]);
   
     return (
@@ -37,7 +37,7 @@ function TableRow({ p, i, currentPage, itemsPerPage,onDelete }:{p:ProductData,i:
         {p.qualidade === 10 && <td className="text-center px-2">Excelente</td>}
         <td>{p.quantidade}</td>
         <td title="Editar" className="px-2"><LinkG color="bg" href="#"><LucideClipboardSignature className="text-sky-400"/></LinkG></td>
-        <td className="px-2" title="Apagar" onClick={onDelete}><LinkG color="t" href="#"><LucideArchiveX className="text-orange-400 text-start"/></LinkG></td>
+        <td className="px-2" title="Apagar" onClick={onDelete}><LinkG color="t" href="#"><LucideTrash2 className="text-orange-400 text-start"/></LinkG></td>
       </motion.tr>
     );
   };
