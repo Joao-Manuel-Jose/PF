@@ -148,3 +148,39 @@ export async function DeleteCountFAzenda(data:{
   
   
 }
+export  async function CreateAgriMoney(name:string,password:string,email:string) {
+
+  try {
+ 
+      const response = await fetch(`${api}/agrymoney/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+         /* Authorization: `Bearer ${token}`,*/
+        },
+      
+        body:JSON.stringify({name,password,email}),
+      });
+  
+      
+      if(!response.ok){
+          const errorData=await response.text()
+          console.log(errorData)
+          throw new Error(`Erro no Servidor:${errorData}`)
+      }
+      const my=await response.json()
+     
+      console.log(my)
+      return ( my)
+
+    }catch(error){
+      console.log(error)
+    }
+
+
+      
+   
+
+  
+  
+}

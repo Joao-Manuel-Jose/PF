@@ -16,7 +16,7 @@ export const MycontentOfcanvas=[
      
     
     },
-    {name:'Pagamneto', href:'#', icone:<LucideCreditCard    className="text-green-600 text-md"  strokeWidth={1.2} /> },
+    {name:'Pagamento', href:'#', icone:<LucideCreditCard     strokeWidth={1.2} /> },
     {name:'Cadastrar afilhada', href:'#', icone:<ClipboardListIcon color="#0b0c38"  strokeWidth={1.2} /> },
     {name:'Perfil',href:'#', icone:<CircleUserRoundIcon  strokeWidth={1.2} /> },
     {name:'Vericar Rendimento',href:'#', icone:<BarChart3   strokeWidth={1.2}/> },
@@ -37,12 +37,16 @@ export function ContentOfcanvas({children, nome}:{
 }){
     return(
         <>
+            <div className="sticky top-0 h-auto  bootom-0 ">
             <h1 className="flex items-center text-md gap-2">
             <CircleUserRoundIcon size={40} className="flex text-gray-600" strokeWidth={0.8} />  {nome}
             </h1>
-            <ul>
+        
+                   <ul>
              {children}
             </ul>
+            </div>
+ 
             
 
         </>

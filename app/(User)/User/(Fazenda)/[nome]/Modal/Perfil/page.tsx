@@ -1,5 +1,5 @@
 "use client"
-import { modalP } from "@/app/(User)/User/NUser/[params]/modal/Fazenda/page";
+import { modalP } from "@/app/(User)/User/NUser/modal/Fazenda/page";
 import { User, useAuth } from "@/app/(User)/user";
 import { ButtonG } from "@/app/Components/Global/button";
 import { ContainerForm } from "@/app/Components/Global/containerForm";
@@ -36,7 +36,7 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
       municipio: '',
       comuna:'',
       email:'',
-      iban:'',
+      accountNumber:'',
       bairro: '',
       rua: '',
       foto:null
@@ -138,6 +138,7 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
         <ParagraphPf>Nome:{user.nome}</ParagraphPf>
         <ParagraphPf>Nif:{user.nif}</ParagraphPf>
         <ParagraphPf>Email:{user.email}</ParagraphPf>
+        <ParagraphPf>Nº de conta: {user.accountNumber?user.accountNumber:' sem conta'}</ParagraphPf>
         <ParagraphPf>Provincia:{user.provincia}</ParagraphPf>
         <ParagraphPf>Municipio:{user.municipio}</ParagraphPf>
         <ParagraphPf>Comuna:{user.comuna}</ParagraphPf>
@@ -162,7 +163,7 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
          </div>
          <div>
            <Label>Possui transporte</Label>
-         <Select name="transporte" onChange={handleChange} value={userUpadte.transporte}>
+         <Select name="transporte" onChange={handleChange} value={String(userUpadte.transporte)}>
                <option value="" >Transporte?</option>
                <option value='true'>Sim</option>
                <option value='false'>Não</option>
@@ -170,8 +171,8 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
          </div>
         
             <div>
-            <Label>Iban</Label>
-            <InputPf placeholder="Iban:" type="text" name="iban" value={userUpadte.iban} onChange={handleChange} />
+            <Label>Nº de conta</Label>
+            <InputPf placeholder="Nº de conta:" type="text" name="iban" value={userUpadte.accountNumber} onChange={handleChange} disabled/>
             </div>
             <div>
              <Label>Descrição:</Label>
@@ -249,7 +250,7 @@ export  default function ModalPerfil({ isOpen,onClose}:modalP){
          </div>
          <div className="flex justify-center">
          <ButtonG color="bg-orange-300" disabled={
-          user.descricao===userUpadte.descricao && user.iban===userUpadte.iban&&
+          user.descricao===userUpadte.descricao && 
           user.transporte===userUpadte.transporte && user.whatsapp===userUpadte.whatsapp&&
          user.distrito===userUpadte.distrito&&
           user.provincia===userUpadte.provincia && user.municipio===userUpadte.municipio&&

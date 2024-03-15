@@ -13,6 +13,7 @@ import { ButtonG } from "@/app/Components/Global/button";
 import { cadastrarClient} from "@/app/api/Cadastro/route";
 import { client, useAuth } from "@/app/(User)/user";
 import { redirect } from "next/navigation";
+import { HashLoader } from "react-spinners";
 interface clientResponse{
   nome:string,
   id:number,
@@ -22,6 +23,8 @@ interface clientResponse{
 
 export default function Comprador(){
   const [userAuthenticate, setUserAuthenticate]=useState('')
+  const [loading, setLoading] = useState(false);
+  const [state,setState]=useState('')
   const {  login } = useAuth();
   const[sucessFazenda, setSucessFazenda]=useState<boolean>(false)
   const [formData, setFormData] = useState<client>({
@@ -81,6 +84,7 @@ export default function Comprador(){
     e.preventDefault();
 
     try {
+      setLoading(true)
       const {token,my} = await cadastrarClient(formData);
       const myRes:clientResponse=my
     
@@ -95,17 +99,19 @@ export default function Comprador(){
         }))
        
         console.log('mystate',formData)
-        setSucessFazenda(true)
+        setTimeout(()=> setSucessFazenda(true),1000)
        
       
      
 
       }
    
+   
 
       
     } catch (error) {
-      alert(error);
+      setLoading(false);
+      setState('ERro, verifique os seus dados!')
       console.error(error);
 
     }
@@ -113,9 +119,11 @@ export default function Comprador(){
     return(
 
       <Container className={styles.bunner} >
+
+     
         {sucessFazenda?
         <>
-         <Title>Parabéns e bem vindo/a!!</Title>
+         <Title>Seja bem vindo/a!!</Title>
          <div className="flex justify-center">
          <ButtonG color="bg-sky-300" onClick={handleLogin}>Entrar</ButtonG>
               </div>
@@ -123,8 +131,14 @@ export default function Comprador(){
         </>
       :<>
         <Title>Comprador</Title>
+
             <form onSubmit={handleSubmit} >
-               
+              {state!==''&&
+              <p className="test-md text-orange-400">{state}</p>
+              }
+               {loading && <div className="flex justify-center">
+            <HashLoader color="#333" size={50} />
+          </div>}
               <div className="grid  gap-4   ">
 
               <Input  placeholder="Nome: " type="text" name='nome' value={formData.nome} onChange={handleChange}/>
@@ -152,6 +166,7 @@ export default function Comprador(){
             </form>
             </>
             }
+            
            </Container>
     )
 

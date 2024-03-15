@@ -1,6 +1,6 @@
 import { CardCounter } from "./cardCounter";
 const cadastros = [
-    { title: 'Fazendas', iconClass: '/background/b-1.jpg', numberUsers:100 },
+    { title: 'Fazendas', iconClass: '/fazenda (2).jpg', numberUsers:100 },
     { title: 'Compradores', iconClass: '/background/compador.jpg', numberUsers:160 },
     { title: 'Indústrias', iconClass: '/background/produtora.jpg', numberUsers:200 },
     { title: 'Emp. de Transportes', iconClass: '/background/transportadora2.JPG' ,numberUsers:80 },

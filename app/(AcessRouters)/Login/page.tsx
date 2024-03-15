@@ -1,12 +1,14 @@
 "use client"
 import Link  from "next/link";
 import { Title } from "@/app/Components/SignUp/title"; 
+import {MoonLoader, PacmanLoader} from 'react-spinners';
+
 import styles from './login.module.css'
 import { FormEvent, useEffect, useState } from "react";
 import LoginUser from "@/app/api/route";
 import { redirect } from "next/navigation";
 import {  User, client, useAuth } from "@/app/(User)/user";
-import { Container } from "../../Components/SignUp/AcessRouter/Container";
+import {  ContainerLogin } from "../../Components/SignUp/AcessRouter/Container";
 import { InputL } from "@/app/Components/Login/input";
 import { AtSignIcon,  LockKeyholeIcon } from "lucide-react";
 import { ButtonG } from "@/app/Components/Global/button";
@@ -18,6 +20,8 @@ export default function Login(){
 
    const [userAuthenticate, setUserAuthenticate]=useState('')
    const { login } = useAuth();
+   const [loading, setLoading] = useState(false);
+
    const [state,setState]=useState(true)
     const [email,setEmail]=useState('')
     const [pasword,setpasword]=useState('')
@@ -33,6 +37,7 @@ export default function Login(){
       municipio: '',
       comuna:'',
       telefone:'',
+      accountNumber:'',
       bairro: '',
       rua: '',
       foto: null,
@@ -52,24 +57,27 @@ export default function Login(){
       bairro: '',
       rua: '',
       nomeGestor:'',
+      accountNumber:'',
       fotoGestor:'',
       foto: null,
     });
   
-  
+    async function HandleUpadte(){
+        await  login('','fazenda',undefined,formData);
+    }
    
     async function HandleLogin(e:FormEvent){
       
     e.preventDefault()
     try {
-      
+      setLoading(true)
      const {token, my}=  await LoginUser({email,pasword});
      const myRes=my
      if(token&&my){
     
       if(my.type_g=='fazenda'){
       setFormData({
-        token:myRes.token,
+        token:token,
         fto:myRes.foto,
         id:myRes.id,
         distrito:myRes.distrito,
@@ -83,7 +91,7 @@ export default function Login(){
         email:myRes.contacto.email,
         bairro:myRes.bairro,
         descricao:myRes.descricao,
-        iban:myRes.iban,
+        accountNumber:myRes.accountNumber,
         whatsapp:myRes.contacto.whatsapp,
         nomeGestor:myRes.gestor.nome,
         fotoGestor:myRes.gestor.foto,
@@ -91,11 +99,8 @@ export default function Login(){
         foto:null,
         transporte:myRes.transporte
 })
-     if(formData.type){
-      await login(token ,formData.type,undefined,formData);
-      await setUserAuthenticate(formData.type)
-
-     }
+    
+          setTimeout(()=>setUserAuthenticate(myRes.type_g),1000)
       
       console.log(myRes)
     }else  if(my.type_g=='cliente'){
@@ -114,15 +119,16 @@ export default function Login(){
         email:myRes.contacto.email,
         bairro:myRes.bairro,
   
-        iban:myRes.iban,
+        accountNumber:myRes.accountNumber,
         whatsapp:myRes.contacto.whatsapp,
         rua:myRes.rua,
         foto:null,
         transporte:myRes.transporte
 })
-     if(client.type){
-      await login(token,client.type,client);
-      setUserAuthenticate(client.type)
+     if(myRes.type_g){
+      setTimeout(()=>setUserAuthenticate(myRes.type_g),1000)
+     
+   
 
      }
   
@@ -130,11 +136,12 @@ export default function Login(){
     }
      }
      else{
-      setState(false)
+      setTimeout(()=>setUserAuthenticate(myRes.type_g),1000)
      }
    
      
       } catch (error) {
+        setLoading(false)
         setState(false)
         console.error('Erro ao enviar dados:', error);
   
@@ -142,25 +149,47 @@ export default function Login(){
        
 
     }
-    useEffect(()=>{
+  
       if(userAuthenticate){
-        if(userAuthenticate=='fazenda')
-        redirect(`User/${userAuthenticate}`)
-      else if(userAuthenticate=='cliente')
-      redirect('User/NUser')
+        console.log(userAuthenticate)
+        if(userAuthenticate=='fazenda'  ){
+          setTimeout(()=>HandleUpadte(),300)
+          
+          redirect(`User/${userAuthenticate}`)
+
+        }
+       
+      else if(userAuthenticate=='cliente'){
+        if(client.type){
+          setTimeout(async()=>await login(client.token,'cliente',client),300);
+           redirect('User/NUser')
+      }
+      
       }
 
-    },[userAuthenticate])
+}
  
     return(
-      <Container className={styles.bg} >
+      <ContainerLogin className='bg-[url("/fazenda.jpg")] bg-center bg-cover min-h-[100vh]' >
             <Title>Login</Title>
             <form onSubmit={HandleLogin} >
                 <div className="grid  gap-2 ">
-               {
-                state?<span></span>
-                : <p className="text-orange-400 text-center  rounded-md p-3  border-sky-500">Dados Invalidos!</p>
-               }
+{loading ? (
+          // Se estiver carregando, exibe o spinner
+        
+          <div className="flex justify-center">
+            <MoonLoader   color="#333" size={50} />
+          </div>
+        
+        ) : state ? (
+          // Se não estiver carregando e o estado for verdadeiro
+          <span></span>
+        ) : (
+          // Se não estiver carregando e o estado for falso
+          <p className="text-orange-400 text-center rounded-md p-3 border-sky-500">
+            Dados Inválidos!
+          </p>
+        )}
                   
                   
                   <InputL placeholder="Email:" type="email" name="email" 
@@ -182,7 +211,7 @@ export default function Login(){
                 </div>
            
             </form>
-          </Container>
+          </ContainerLogin>
      
     
     )

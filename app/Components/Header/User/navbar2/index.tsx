@@ -11,6 +11,7 @@ import { Notification } from "@/app/Components/User/Notifications/page.tsx";
 import Mensage from "@/app/Components/User/Mensage/page";
 import { CardBuy } from "@/app/Components/User/NUser/cardBuy";
 import Badge from "../IconBadge";
+import { MainLinkHeader } from "../../mainlink";
 
 export const linksIconN= [
     { name: 'Notificações', href1: '#',href2:'Components/User/Notificatios' ,icone:<Badge icon={<BellIcon  size={30} color="#27c5ec" />} count={5}/> , componente:<Notification  props={5} />},
@@ -21,9 +22,10 @@ export const linksIconN= [
     
  
   ];
-  export function UserNavN({children, data}:{
+  export function UserNavN({children, data, href}:{
     children:ReactNode,
-    data:ContentOfcanvas[]
+    data:ContentOfcanvas[],
+    href:string
 }){
      const [isClick, setIsclick]=useState(false)
       const pathname=usePathname()
@@ -38,7 +40,7 @@ export const linksIconN= [
       
         <Container>
         <MenuLinksSecondary>
-              <MainLink/>
+              <MainLinkHeader hrf={href}/>
                <ContainerLink>             
                       
                     {children}

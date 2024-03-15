@@ -2,6 +2,7 @@
 import { useAuth } from "@/app/(User)/user";
 import { ButtonG } from "@/app/Components/Global/button";
 import { InputG } from "@/app/Components/Global/input";
+import { TitlePublic } from "@/app/Components/Global/titlep";
 import { Input } from "@/app/Components/SignUp/input";
 import { DeleteCountFAzenda, UpdateFAzenPassword } from "@/app/api/Fazenda/route";
 import { LucideSendHorizontal } from "lucide-react";
@@ -115,6 +116,7 @@ export default function Password(){
     };
     return(
         <>
+         <TitlePublic>Privado</TitlePublic>   
         <h1>Password</h1>
         <section className="bg-sky-100 p-2 py-10 md:p-4 w-full md:w-[60%] mx-auto  rounded-lg">
             <form onSubmit={handleSubmit} className="mt-3 grid gap-4 justify-center md:justify-start">

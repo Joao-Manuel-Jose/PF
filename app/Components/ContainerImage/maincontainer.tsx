@@ -29,14 +29,7 @@ export default function MainContainer({children1, children2}:{
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Image
-          className="hidden w-full md:block"
-          src={boy}
-          height={700}
-          width={565}
-          alt="boy"
-        />
-      
+       
       </motion.div>
       <div className="flex flex-col items-center justify-center space-y-4 py-20 md:-mt-2 md:items-start md:space-y-6 md:py-0">
         <div ref={ref} className=''>
@@ -46,7 +39,7 @@ export default function MainContainer({children1, children2}:{
             transition={{ duration: 0.5, delay: 0.2 }}
             className='space-y-4 md:space-y-6'
           >
-             <Title>Okukula</Title>
+             <Title>AgroClick</Title>
              <p className='text-center md:text-start text-white text-base'>
               Aqui
               podes comprar prudutos agricolas e derivados de forma online

@@ -1,8 +1,9 @@
 "use client"
-import { modalP } from "@/app/(User)/User/NUser/[params]/modal/Fazenda/page";
+import { modalP } from "@/app/(User)/User/NUser/modal/Fazenda/page";
 import { useAuth } from "@/app/(User)/user";
 import { ButtonG } from "@/app/Components/Global/button";
 import { ContainerForm } from "@/app/Components/Global/containerForm";
+import { Label } from "@/app/Components/Global/label";
 import { LabelSignUp } from "@/app/Components/Global/labelSignUp";
 import { Select } from "@/app/Components/Global/select";
 import { Textarea } from "@/app/Components/Global/textarea";
@@ -21,18 +22,25 @@ export interface ProductData{
    categoria: string;
    preco:number | undefined;
    fto:string;
+   data_caducidade:''
    foto: File | null;
  
  }
-const produtoQualidade=[
+export const produtoQualidade=[
    {tittle:'Boa',value:8},
    {tittle:'Razoável', value:5},
    { tittle:'Excelente', value:10},
 ]
-const produtoCategoria=[
-   {tittle:'Fruta',value:8},
-   {tittle:'Legume', value:5},
-   { tittle:'Vegetal', value:10},
+export const produtoCategoria=[
+   {title:'Fruta'},
+   {title:'Legume'},
+   { title:'Vegetal'},
+   { title:'Grão ou Cerial'},
+   {title:'Leguminosa'},
+   {title:'Erva Aromática'},
+   {title:'Raíz ou Tubérculo'},
+
+   
 ]
 
 export  default function ModalCadProduto({ isOpen,onClose}:modalP){
@@ -41,10 +49,11 @@ export  default function ModalCadProduto({ isOpen,onClose}:modalP){
    const [product, setProduct]=useState<ProductData>({
       nome:'',
       id:0,
+      data_caducidade:'',
       qualidade:0,
-      quantidade:undefined,
-      quantidadeS:undefined,
-      preco:undefined,
+      quantidade:0,
+      quantidadeS:0,
+      preco:0,
       descricao:'',
       categoria:'',
       fto:'',
@@ -92,6 +101,7 @@ export  default function ModalCadProduto({ isOpen,onClose}:modalP){
                   descricao:'',
                   categoria:'',
                   fto:'',
+                  data_caducidade:'',
                   foto:null
                   
                }))
@@ -124,14 +134,38 @@ export  default function ModalCadProduto({ isOpen,onClose}:modalP){
       }
       <form onSubmit={handleSubmit} >
       <div className="grid md:grid-cols-2 gap-1   ">
-      <div className="grid  gap-3 px-4 py-4  ">
-         <Input placeholder="Nome" type="text" name="nome" value={product.nome} onChange={handleChange} />
-         <Input placeholder="Preço:" type="number" name="preco" value={product.preco} onChange={handleChange} />
+      <div className="grid  gap-2 px-2 py-4  ">
+         <div>
+            <Label>Nome do produto</Label>
+            <Input placeholder="Nome" type="text" name="nome" value={product.nome} onChange={handleChange} />
+         </div>
+         <div>
+         <Label>Mínima Quant. de saída de venda</Label>
          <Input placeholder="Quantidade de saida" type="number" min={50} value={product.quantidadeS} onChange={handleChange} name="quantidadeS" />
-         <Input placeholder="Quantidade em stock" type="number" min={50} value={product.quantidade} onChange={handleChange} name="quantidade" />
+         </div>
+        <div>
+            <Label>Preço de uma Quant. de saída</Label>
+            <Input placeholder="Preço:" type="number" name="preco"  onChange={handleChange} />
+        </div>
+         <div>
+            <Label>Nº de vezes da Quant. de saída em stock</Label>
+            <Input placeholder="Quantidade em stock" type="number" min={1} value={product.quantidade} onChange={handleChange} name="quantidade" />
+         </div>
+         
+         
       </div>
-         <div className="grid  gap-5 px-4 py-4  ">
-            <Select value={product.qualidade} onChange={handleChange} name="qualidade">
+         <div className="grid  gap-2 px-4 py-4  ">
+         <div>
+            <Label>Data limite de venda</Label>
+            <Input placeholder="Caducidade" type="date" onChange={handleChange} value={product.data_caducidade} name="data_caducidade"  />
+         </div>
+             <div>
+             <Label>Foto:{product.foto?<span >selecionada</span>: <span > não selecionada</span>}</Label>
+             <LabelSignUp htmlFor="foto">Foto</LabelSignUp>
+            <Input type="file" id="foto" className="hidden"   title="Insira a sua foto" name="foto"  accept="image/*" onChange={handleFileChange}  />
+             </div>
+             
+             <Select value={product.qualidade} onChange={handleChange} name="qualidade">
                <option value="">Selecione a qualidade</option>
                {
                 produtoQualidade.map((p,index)=>(
@@ -145,14 +179,13 @@ export  default function ModalCadProduto({ isOpen,onClose}:modalP){
                <option value="">Selecione a categoria</option>
                {
                 produtoCategoria.map((p,index)=>(
-                  <option value={p.tittle} key={index} className="hover:bg-orange-300 hover:text-white">{p.tittle}</option>
+                  <option value={p.title} key={index} className="hover:bg-orange-300 hover:text-white">{p.title}</option>
                 )
 
                 )
                }
             </Select>
-            <LabelSignUp htmlFor="foto">Foto:{product.foto?<span >selecionada</span>: <span > não selecionada</span>}</LabelSignUp>
-            <Input type="file" id="foto" className="hidden"   title="Insira a sua foto" name="foto"  accept="image/*" onChange={handleFileChange}  />
+           
            <Textarea placeholder="Descrição:" required value={product.descricao} name="descricao" onChange={handleChange} />
          </div>
        

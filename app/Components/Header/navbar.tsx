@@ -11,7 +11,6 @@ import { Linkb } from "./link2";
 import { AlignJustify ,HomeIcon,X} from 'lucide-react'
 import { usePathname } from "next/navigation";
 import { HeaderContainer } from "./containerHeader";
-import { MainLink } from "./User/mainLink";
 import { ContContent } from "./ContContent";
 import { MainLinkHeader } from "./mainlink";
 
@@ -42,7 +41,7 @@ export function Navbar(){
         <HeaderContainer>
         
             <ContContent>
-                <MainLinkHeader/>
+                <MainLinkHeader hrf="/"/>
                
                 <div className="hidden md:block">
                         <div className=" ml-4 flex items-center space-x-4">

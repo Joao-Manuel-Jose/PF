@@ -5,6 +5,7 @@ import { ButtonG } from "@/app/Components/Global/button"
 import { Label } from "@/app/Components/Global/label"
 import { LabelSignUp } from "@/app/Components/Global/labelSignUp"
 import { Select } from "@/app/Components/Global/select"
+import { TitlePublic } from "@/app/Components/Global/titlep"
 import { InputPf } from "@/app/Components/User/Modal/input"
 import { PicUser } from "@/app/Components/User/fto"
 import { UpdateFAzendafoto } from "@/app/api/Fazenda/route"
@@ -146,8 +147,8 @@ export default function Dados(){
 if(user){
     return(
         <>
-        <h1 className="uppercase text-center text-sky-300">Dados Pessoais</h1>
-        <section className="grid mt-4">
+            <TitlePublic>Dados Pesoais</TitlePublic>      
+             <section className="grid mt-4">
             <div>
             {/*<PicUser src={`${api}/${user?.fto}`} />*/}
             </div>

@@ -4,6 +4,7 @@ import { User, useAuth } from "@/app/(User)/user";
 import { ButtonG } from "@/app/Components/Global/button";
 import { Label } from "@/app/Components/Global/label";
 import { Select } from "@/app/Components/Global/select";
+import { TitlePublic } from "@/app/Components/Global/titlep";
 import { InputPf } from "@/app/Components/User/Modal/input";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -122,7 +123,7 @@ export default function Dados(){
         if(user){
     return(
         <>
-        <p>Localização</p>
+         <TitlePublic>Localização</TitlePublic>   
         <div className="mt-4 p-3 bg-gray-50 rounded-xl">
         
         <form  onSubmit={handleSubmit} className="mt-3 grid gap-4 justify-center md:justify-start">

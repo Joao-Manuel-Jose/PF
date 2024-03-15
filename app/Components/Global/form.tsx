@@ -5,7 +5,7 @@ interface formProps extends FormHTMLAttributes<HTMLFormElement>{
 }
 export function Form({children,...props}:formProps){
     return(
-    <div className=" max-w-md mx-auto py-2 shadow-lg px-1 rounded-xl shadow-sm bg-gray-100
+    <div className="  py-1 shadow-lg  rounded-xl shadow-sm bg-gray-50
    
   
     ">

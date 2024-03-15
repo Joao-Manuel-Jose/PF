@@ -3,7 +3,7 @@ import { ReactNode,useState } from "react";
 import { AlignJustify ,BellIcon,DropletIcon,HomeIcon,LucideCircleEllipsis,MessageCircleIcon,ShoppingCartIcon,Star,ThermometerSun,X} from 'lucide-react'
 import { usePathname } from "next/navigation";
 import { Container } from "./container";
-import { MainLink } from "./mainLink";
+
 import { MenuLinksSecondary } from "./secondaryLink";
 import {  LinkUserB } from "./link";
 import { ContainerLink } from "./containerLink";
@@ -16,6 +16,7 @@ import { Notification } from "../../User/Notifications/page.tsx";
 import Mensage from "../../User/Mensage/page";
 import { HomeResult } from "../../User/NUser/homeResult";
 import { CardBuy } from "../../User/NUser/cardBuy";
+import { MainLinkHeader } from "../mainlink";
 
 
 export const linksIcon = [
@@ -28,9 +29,10 @@ export const linksIcon = [
  
   ];
 
-export function UserNav({children, data}:{
+export function UserNav({children, data ,href}:{
     children:ReactNode,
-    data:ContentOfcanvas[]
+    data:ContentOfcanvas[],
+    href:string
 }, ){
      const [isClick, setIsclick]=useState(false)
       const pathname=usePathname()
@@ -45,7 +47,7 @@ export function UserNav({children, data}:{
       
         <Container>
         <MenuLinksSecondary>
-              <MainLink/>
+              <MainLinkHeader hrf={href} />
                <ContainerLink>             
                       
                     {children}

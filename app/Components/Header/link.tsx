@@ -15,7 +15,7 @@ export function Linka({ children, href, ...props }: LinkProps){
   
     return(
       <Link href={href} className={clsx(
-        'bg-gray-50 text-base font-normal shadow hover:brightness-90 rounded-lg py-2 px-2  ',
+        'bg-gray-50 text-sm font-normal shadow hover:brightness-90 rounded-lg py-2 px-2  ',
         {
             ' text-orange-400 font-normal': pathname === href,
           }

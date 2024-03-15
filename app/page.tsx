@@ -3,7 +3,6 @@ import { Navbar } from './Components/Header/navbar'
 import MainContainer from './Components/ContainerImage/maincontainer'
 import { Counter } from './Components/Home/Counters'
 import Footer from './Components/Footer/page'
-import { CounterHome } from './Home/Counters'
 import { TitlePublic } from './Components/Global/titlep'
 
 
@@ -28,10 +27,8 @@ export default function Home() {
       
        </MainContainer>
 
-       <section className='my-4'>
-      <TitlePublic>Produtos</TitlePublic>
-      <p className='text-center text-sm font-normal'>Aqui tú podes comprar produtos agricolas e seus <br/>  derivados à grande quantidades!</p>
-      </section>
+     <br/>
+     <br/>
      
       
      

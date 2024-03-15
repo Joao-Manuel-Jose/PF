@@ -24,7 +24,7 @@ export interface User {
   rua: string;
   pasword?:string
   fto:string;
-  iban?:string
+  accountNumber?:string,
   foto: File | null;
   nomeGestor?:string
   fotoGestor?:string
@@ -42,7 +42,7 @@ export interface client {
   provincia?: string;
   municipio?: string;
   distrito?: string;
-  iban?: string;
+  accountNumber?: string;
   comuna?:string,
   email:string
   bairro?: string;
@@ -92,7 +92,7 @@ export function AuthProvider({ children }: AuthContextProps) {
     rua: '',
     pasword:'',
     fto:'',
-    iban:'',
+    accountNumber:'',
     foto:  null,
  
   
@@ -115,7 +115,7 @@ export function AuthProvider({ children }: AuthContextProps) {
     rua: '',
     pasword:'',
     fto:'',
-    iban:'',
+    accountNumber:'',
     foto:  null,
     nomeGestor:'',
     fotoGestor:''
@@ -151,12 +151,13 @@ export function AuthProvider({ children }: AuthContextProps) {
   }
   
   const login = (newToken: string,type:string,client?:client, newUser?: User) => {
-    if(type==='fazenda'&& newUser){
+  
+    if(type==='fazenda'&& newUser ){
     setUser(newUser);
     setFoto(newUser.fto)
-    setToken(newToken);
+    setToken(newUser.token?newUser.token:'');
     // Armazene o token de forma segura, por exemplo, em cookies ou local storage
-    localStorage.setItem('OkukulaToken', newToken);
+    localStorage.setItem('OkukulaToken', newUser.token?newUser.token:'');
     localStorage.setItem('OkukulaUser', JSON.stringify(newUser));
     localStorage.setItem('OkukulaFoto',newUser.fto)
   }
@@ -213,7 +214,7 @@ export function AuthProvider({ children }: AuthContextProps) {
             bairro: response.bairro,
             rua: response.rua,
             
-            iban:response.iban,
+            accountNumber:response.accountNumber,
             foto:  null,
             nomeGestor:response.gestor.nome,
             fotoGestor:response.gestor.foto
@@ -262,7 +263,7 @@ export function AuthProvider({ children }: AuthContextProps) {
         rua: '',
         pasword:'',
         fto:'',
-        iban:'',
+        accountNumber:'',
         foto:  null,
         nomeGestor:'',
         fotoGestor:''
@@ -292,7 +293,7 @@ export function AuthProvider({ children }: AuthContextProps) {
         rua: '',
         pasword:'',
         fto:'',
-        iban:'',
+        accountNumber:'',
         foto:  null,
         nomeGestor:'',
         fotoGestor:''

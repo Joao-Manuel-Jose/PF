@@ -20,11 +20,10 @@ export default function SignUp(){
 
 
 
-    return(<div className='bg-gray-200'>
+    return(<div className='bg-gray-200 min-h-[100vh]'>
         
-          <div className="flex flex-col  items-center py-10 ">
+          <div className="flex flex-col  items-center  ">
             <div className='my-5 sm:mt-3'>
-              <TitlePublic>Cadastro</TitlePublic>
               <h1 className='uppercase  p-2 bg-yelow-600 rounded-xl '>Cadastre-se de acordo a sua entidade</h1>
               <hr className='text-sky-300'/>
             </div>

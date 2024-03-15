@@ -5,7 +5,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { KudikaLogo } from './okm'
+import { AgroClickLogo} from './okm'
 import { Container } from './Container'
 import { CopyrightWrapper } from './CopyrightWrapper'
 import { SiteMapWrapper } from './SiteMapWrapper'
@@ -29,13 +29,7 @@ export default function Footer() {
         }}
       ></ScrollToTop>*/}
       <section className="relative flex flex-col justify-center gap-12 md:flex-row md:justify-between md:gap-0">
-
-         <div className='w-30'>
-          <div className='bg-white p-3 shadow rounded-full mx-2'>
-          <MainLink/>
-          </div>
-        
-         </div>
+      <AgroClickLogo/>
          
          
          
@@ -125,11 +119,11 @@ export default function Footer() {
         </div>
       </section>
       
-    
-    </Container>
-    <CopyrightWrapper>
-        <p >&copy; 2024 Okukula-Market</p>
+      <CopyrightWrapper>
+        <p >&copy;2024-AgroClick</p>
       </CopyrightWrapper>
+    </Container>
+
     </>
   )
 }
